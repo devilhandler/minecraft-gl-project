@@ -5,7 +5,7 @@ class Sandbox : public Minecraft::Application
 public:
 	Sandbox()
 	{
-
+		
 	}
 
 	~Sandbox()
