@@ -2303,11 +2303,14 @@ template <typename Context> class value {
     custom.format = format_custom<value_type>;
   }
 
-  template <typename T, FMT_ENABLE_IF(!has_formatter<T, char_type>())>
+template <typename T, FMT_ENABLE_IF(!has_formatter<T, char_type>())>
   FMT_CONSTEXPR value(const T&, custom_tag) {
-    // Cannot format an argument; to make type T formattable provide a
-    // formatter<T> specialization: https://fmt.dev/latest/api.html#udt.
-    type_is_unformattable_for<T, char_type> _;
+      // Commented out to avoid MSVC C2079 error
+      // type_is_unformattable_for<T, char_type> _;
+
+      // This will still fail at compile time with a more standard error
+      static_assert(false,
+                    "Cannot format this type. Please provide a formatter<T> specialization.");
   }
 
   // Formats an argument of a custom type, such as a user-defined class.

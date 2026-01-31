@@ -18,6 +18,9 @@ project "Minecraft"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "mcpch.h"
+	pchsource "Minecraft/src/mcpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -26,6 +29,7 @@ project "Minecraft"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
@@ -57,7 +61,7 @@ project "Minecraft"
 		defines "MC_DIST"
 		optimize "On"
 
-	buildoptions "/utf-8"
+	buildoptions {"/utf-8"}
 
 project "Sandbox"
 	location "Sandbox"
@@ -107,4 +111,4 @@ project "Sandbox"
 		defines "MC_DIST"
 		optimize "On"
 
-	buildoptions "/utf-8"
+	buildoptions {"/utf-8"}

@@ -4,6 +4,9 @@
     <Filter Include="Minecraft">
       <UniqueIdentifier>{FEA1E9E8-6A0C-9E5F-B34A-4F051FF47BB4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Minecraft\Events">
+      <UniqueIdentifier>{22647144-0E5D-9096-378F-751B23E76FA2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Minecraft.h" />
@@ -16,9 +19,22 @@
     <ClInclude Include="src\Minecraft\EntryPoint.h">
       <Filter>Minecraft</Filter>
     </ClInclude>
+    <ClInclude Include="src\Minecraft\Events\ApplicationEvent.h">
+      <Filter>Minecraft\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Minecraft\Events\Event.h">
+      <Filter>Minecraft\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Minecraft\Events\KeyEvent.h">
+      <Filter>Minecraft\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Minecraft\Events\MouseEvent.h">
+      <Filter>Minecraft\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Minecraft\Log.h">
       <Filter>Minecraft</Filter>
     </ClInclude>
+    <ClInclude Include="src\mcpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Application.cpp">
@@ -27,5 +43,6 @@
     <ClCompile Include="src\Minecraft\Log.cpp">
       <Filter>Minecraft</Filter>
     </ClCompile>
+    <ClCompile Include="src\mcpch.cpp" />
   </ItemGroup>
 </Project>
