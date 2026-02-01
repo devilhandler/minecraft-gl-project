@@ -8,7 +8,13 @@ workspace "Minecraft"
 		"Dist"
 	}
 
-local outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Minecraft/vendor/GLFW/include"
+
+include "Minecraft/vendor/GLFW"
 
 project "Minecraft"
 	location "Minecraft"
@@ -30,7 +36,15 @@ project "Minecraft"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib",
+		"dwmapi.lib"
 	}
 
 	filter "system:windows"
@@ -51,17 +65,20 @@ project "Minecraft"
 
 	filter "configurations:Debug"
 		defines "MC_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
-	buildoptions {"/utf-8"}
+	buildoptions "/utf-8"
 
 project "Sandbox"
 	location "Sandbox"
@@ -101,14 +118,17 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "MC_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
-	buildoptions {"/utf-8"}
+	buildoptions "/utf-8"
