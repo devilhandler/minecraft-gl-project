@@ -5,6 +5,8 @@
 #include "Minecraft/Events/KeyEvent.h"
 #include "Minecraft/Events/MouseEvent.h"
 
+#include <glad/glad.h>
+
 namespace Minecraft
 {
 	static bool s_GLFWInitialized{ false };
@@ -48,6 +50,11 @@ namespace Minecraft
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		// glad stuff
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		MC_CORE_ASSERT(status, "Failed to initialize Glad!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

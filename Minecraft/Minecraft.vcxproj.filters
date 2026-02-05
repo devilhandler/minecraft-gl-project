@@ -37,6 +37,12 @@
     <ClInclude Include="src\Minecraft\Events\MouseEvent.h">
       <Filter>Minecraft\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Minecraft\Layer.h">
+      <Filter>Minecraft</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Minecraft\LayerStack.h">
+      <Filter>Minecraft</Filter>
+    </ClInclude>
     <ClInclude Include="src\Minecraft\Log.h">
       <Filter>Minecraft</Filter>
     </ClInclude>
@@ -47,15 +53,15 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\mcpch.h" />
-    <ClInclude Include="src\Minecraft\Layer.h">
-      <Filter>Minecraft</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Minecraft\LayerStack.h">
-      <Filter>Minecraft</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Application.cpp">
+      <Filter>Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Minecraft\Layer.cpp">
+      <Filter>Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Minecraft\LayerStack.cpp">
       <Filter>Minecraft</Filter>
     </ClCompile>
     <ClCompile Include="src\Minecraft\Log.cpp">
@@ -65,11 +71,5 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\mcpch.cpp" />
-    <ClCompile Include="src\Minecraft\Layer.cpp">
-      <Filter>Minecraft</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Minecraft\LayerStack.cpp">
-      <Filter>Minecraft</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

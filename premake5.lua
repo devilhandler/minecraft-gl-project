@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Minecraft/vendor/GLFW/include"
+IncludeDir["Glad"] = "Minecraft/vendor/Glad/include"
 
 include "Minecraft/vendor/GLFW"
+include "Minecraft/vendor/Glad"
 
 project "Minecraft"
 	location "Minecraft"
@@ -37,15 +39,19 @@ project "Minecraft"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib",
 		"dwmapi.lib"
 	}
+
+	buildoptions "/utf-8"
 
 	filter "system:windows"
 		cppdialect "C++23"
@@ -55,7 +61,8 @@ project "Minecraft"
 		defines
 		{
 			"MC_PLATFORM_WINDOWS",
-			"MC_BUILD_DLL"
+			"MC_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -65,20 +72,24 @@ project "Minecraft"
 
 	filter "configurations:Debug"
 		defines "MC_DEBUG"
-		buildoptions "/MDd"
+		staticruntime "off"
+		runtime "Debug"
+		-- buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
-		buildoptions "/MD"
+		staticruntime "off"
+		runtime "Release"
+		-- buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
-		buildoptions "/MD"
+		staticruntime "off"
+		runtime "Release"
+		-- buildoptions "/MD"
 		optimize "On"
-
-	buildoptions "/utf-8"
 
 project "Sandbox"
 	location "Sandbox"
@@ -106,6 +117,8 @@ project "Sandbox"
 		"Minecraft"
 	}
 
+	buildoptions "/utf-8"
+
 	filter "system:windows"
 		cppdialect "C++23"
 		staticruntime "On"
@@ -118,17 +131,21 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "MC_DEBUG"
-		buildoptions "/MDd"
+		staticruntime "off"
+		runtime "Debug"
+		-- buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
-		buildoptions "/MD"
+		staticruntime "off"
+		runtime "Release"
+		-- buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
-		buildoptions "/MD"
+		staticruntime "off"
+		runtime "Release"
+		-- buildoptions "/MD"
 		optimize "On"
-
-	buildoptions "/utf-8"
