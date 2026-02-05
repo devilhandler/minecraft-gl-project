@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Minecraft/vendor/GLFW/include"
 IncludeDir["Glad"] = "Minecraft/vendor/Glad/include"
+IncludeDir["imguidock"] = "Minecraft/vendor/imguidock"
 
 include "Minecraft/vendor/GLFW"
 include "Minecraft/vendor/Glad"
+include "Minecraft/vendor/imguidock"
 
 project "Minecraft"
 	location "Minecraft"
@@ -40,13 +42,15 @@ project "Minecraft"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.imguidock}",
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"imguidock",
 		"opengl32.lib",
 		"dwmapi.lib"
 	}

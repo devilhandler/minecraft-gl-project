@@ -53,6 +53,8 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\mcpch.h" />
+    <ClInclude Include="src\Minecraft\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Platform\OpenGL\imguiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Application.cpp">
@@ -71,5 +73,7 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\mcpch.cpp" />
+    <ClCompile Include="src\Minecraft\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\imguiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

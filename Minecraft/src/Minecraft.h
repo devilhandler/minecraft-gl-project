@@ -6,6 +6,8 @@
 #include "Minecraft/Log.h"
 #include "Minecraft/Layer.h"
 
+#include "Minecraft/ImGui/ImGuiLayer.h"
+
 // Entrypoint--------------------
 #include "Minecraft/EntryPoint.h"
 // ------------------------------
