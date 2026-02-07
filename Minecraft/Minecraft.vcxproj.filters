@@ -7,8 +7,14 @@
     <Filter Include="Minecraft\Events">
       <UniqueIdentifier>{22647144-0E5D-9096-378F-751B23E76FA2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Minecraft\ImGui">
+      <UniqueIdentifier>{A81D2F67-14A9-9C2B-1DBA-1F2089C4F82B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\Minecraft\Events\MouseEvent.h">
       <Filter>Minecraft\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Minecraft\ImGui\ImGuiLayer.h">
+      <Filter>Minecraft\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Minecraft\Layer.h">
       <Filter>Minecraft</Filter>
     </ClInclude>
@@ -49,16 +58,24 @@
     <ClInclude Include="src\Minecraft\Window.h">
       <Filter>Minecraft</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\imguiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\mcpch.h" />
-    <ClInclude Include="src\Minecraft\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Platform\OpenGL\imguiOpenGLRenderer.h" />
+    <ClInclude Include="src\Minecraft\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Minecraft\KeyCodes.h" />
+    <ClInclude Include="src\Minecraft\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Application.cpp">
       <Filter>Minecraft</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Minecraft\ImGui\ImGuiLayer.cpp">
+      <Filter>Minecraft\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Minecraft\Layer.cpp">
       <Filter>Minecraft</Filter>
@@ -69,11 +86,13 @@
     <ClCompile Include="src\Minecraft\Log.cpp">
       <Filter>Minecraft</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\imguiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\mcpch.cpp" />
-    <ClCompile Include="src\Minecraft\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\imguiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

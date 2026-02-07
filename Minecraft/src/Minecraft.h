@@ -6,6 +6,10 @@
 #include "Minecraft/Log.h"
 #include "Minecraft/Layer.h"
 
+#include "Minecraft/Input.h"
+#include "Minecraft/KeyCodes.h"
+#include "Minecraft/MouseButtonCodes.h"
+
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
 // Entrypoint--------------------

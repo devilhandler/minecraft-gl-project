@@ -8,7 +8,6 @@
 
 namespace Minecraft
 {
-
 	class MC_API ImGuiLayer : public Layer
 	{
 	public:

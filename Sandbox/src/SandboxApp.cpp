@@ -9,12 +9,20 @@ public:
 
 	void OnUpdate() override
 	{
-		MC_INFO("ExampleLayer::Update");
+		if (Minecraft::Input::IsKeyPressed(MC_KEY_TAB))
+			MC_INFO("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Minecraft::Event& event) override
 	{
-		MC_TRACE("{0}", event);
+		// MC_TRACE("{0}", event);
+		if (event.GetEventType() == Minecraft::EventType::KeyPressed)
+		{
+			Minecraft::KeyPressedEvent& e = (Minecraft::KeyPressedEvent&)event;
+			if (e.GetKeycode() == MC_KEY_TAB)
+				MC_TRACE("Tab key is pressed (event)!");
+			MC_TRACE("{0}", (char)e.GetKeycode());
+		}
 	}
 };
 

@@ -1,5 +1,6 @@
 workspace "Minecraft"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -16,14 +17,18 @@ IncludeDir["GLFW"] = "Minecraft/vendor/GLFW/include"
 IncludeDir["Glad"] = "Minecraft/vendor/Glad/include"
 IncludeDir["imguidock"] = "Minecraft/vendor/imguidock"
 
-include "Minecraft/vendor/GLFW"
-include "Minecraft/vendor/Glad"
-include "Minecraft/vendor/imguidock"
+group "Dependencies"
+	include "Minecraft/vendor/GLFW"
+	include "Minecraft/vendor/Glad"
+	include "Minecraft/vendor/imguidock"
+
+group ""
 
 project "Minecraft"
 	location "Minecraft"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -59,7 +64,6 @@ project "Minecraft"
 
 	filter "system:windows"
 		cppdialect "C++23"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -76,21 +80,18 @@ project "Minecraft"
 
 	filter "configurations:Debug"
 		defines "MC_DEBUG"
-		staticruntime "off"
 		runtime "Debug"
 		-- buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
-		staticruntime "off"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
-		staticruntime "off"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "On"
@@ -100,6 +101,7 @@ project "Sandbox"
 	kind "ConsoleApp"
 
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -125,7 +127,7 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++23"
-		staticruntime "On"
+		-- staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -135,21 +137,18 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "MC_DEBUG"
-		staticruntime "off"
 		runtime "Debug"
 		-- buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
-		staticruntime "off"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
-		staticruntime "off"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "On"

@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Minecraft
 {
 
@@ -40,7 +42,7 @@ namespace Minecraft
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
 
-		MC_CORE_INFO("{0}", e);
+		// MC_CORE_INFO("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
@@ -64,6 +66,9 @@ namespace Minecraft
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			auto [x, y] = Input::GetMousePosition();
+			// MC_CORE_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		};

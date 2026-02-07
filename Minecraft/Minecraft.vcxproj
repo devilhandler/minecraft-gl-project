@@ -170,11 +170,15 @@
     <ClInclude Include="src\Minecraft\Events\KeyEvent.h" />
     <ClInclude Include="src\Minecraft\Events\MouseEvent.h" />
     <ClInclude Include="src\Minecraft\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Minecraft\Input.h" />
+    <ClInclude Include="src\Minecraft\KeyCodes.h" />
     <ClInclude Include="src\Minecraft\Layer.h" />
     <ClInclude Include="src\Minecraft\LayerStack.h" />
     <ClInclude Include="src\Minecraft\Log.h" />
+    <ClInclude Include="src\Minecraft\MouseButtonCodes.h" />
     <ClInclude Include="src\Minecraft\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\imguiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\mcpch.h" />
   </ItemGroup>
@@ -185,6 +189,7 @@
     <ClCompile Include="src\Minecraft\LayerStack.cpp" />
     <ClCompile Include="src\Minecraft\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\imguiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\mcpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
