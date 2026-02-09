@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Minecraft/vendor/GLFW/include"
 IncludeDir["Glad"] = "Minecraft/vendor/Glad/include"
 IncludeDir["imguidock"] = "Minecraft/vendor/imguidock"
+IncludeDir["glm"] = "Minecraft/vendor/glm"
 
 group "Dependencies"
 	include "Minecraft/vendor/GLFW"
@@ -39,7 +40,9 @@ project "Minecraft"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -49,6 +52,7 @@ project "Minecraft"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.imguidock}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -115,7 +119,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Minecraft/vendor/spdlog/include",
-		"Minecraft/src"
+		"Minecraft/src",
+		"Minecraft/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links

@@ -1,16 +1,23 @@
 #include <Minecraft.h>
 
+#include "imguidock/imgui.h"
+
 class ExampleLayer : public Minecraft::Layer
 {
 public:
 	ExampleLayer()
 		: Layer("Example") { }
 
-
 	void OnUpdate() override
 	{
 		if (Minecraft::Input::IsKeyPressed(MC_KEY_TAB))
 			MC_INFO("Tab key is pressed (poll)!");
+	}
+
+	virtual void OnImGuiRender() override {
+		ImGui::Begin("Test");
+		ImGui::Text("Hello world!");
+		ImGui::End();
 	}
 
 	void OnEvent(Minecraft::Event& event) override

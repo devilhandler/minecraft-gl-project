@@ -18,6 +18,8 @@ namespace Minecraft
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+
+		m_ImGuiLayer = std::make_unique<ImGuiLayer>();
 	}
 
 	Application::~Application()
@@ -66,6 +68,12 @@ namespace Minecraft
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			// ImGui Render
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			auto [x, y] = Input::GetMousePosition();
 			// MC_CORE_TRACE("{0}, {1}", x, y);

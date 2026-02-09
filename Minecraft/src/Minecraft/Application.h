@@ -7,6 +7,8 @@
 #include "Minecraft/Events/Event.h"
 #include "Minecraft/Events/ApplicationEvent.h"
 
+#include "Minecraft/ImGui/ImGuiLayer.h"
+
 namespace Minecraft
 {
 	class MC_API Application
@@ -29,6 +31,7 @@ namespace Minecraft
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		std::unique_ptr<ImGuiLayer> m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
