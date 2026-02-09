@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef MC_PLATFORM_WINDOWS
-	#ifdef MC_BUILD_DLL
-		#define MC_API __declspec(dllexport)
+	#if MC_DYNAMIC_LINK
+		#ifdef MC_BUILD_DLL
+			#define MC_API __declspec(dllexport)
+		#else
+			#define MC_API __declspec(dllimport)
+		#endif
 	#else
-		#define MC_API __declspec(dllimport)
+		#define MC_API
 	#endif
 #else
 	#error This minecraft clone project only support Windows!

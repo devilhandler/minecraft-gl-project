@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Minecraft/Window.h"
+#include "Minecraft/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Minecraft
@@ -27,6 +29,7 @@ namespace Minecraft
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

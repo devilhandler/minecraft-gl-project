@@ -27,9 +27,10 @@ group ""
 
 project "Minecraft"
 	location "Minecraft"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++23"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -64,10 +65,14 @@ project "Minecraft"
 		"dwmapi.lib"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	buildoptions "/utf-8"
 
 	filter "system:windows"
-		cppdialect "C++23"
 		systemversion "latest"
 
 		defines
@@ -77,35 +82,31 @@ project "Minecraft"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 	filter "configurations:Debug"
 		defines "MC_DEBUG"
 		runtime "Debug"
 		-- buildoptions "/MDd"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
 		runtime "Release"
 		-- buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
 		runtime "Release"
 		-- buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++23"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -132,7 +133,6 @@ project "Sandbox"
 	buildoptions "/utf-8"
 
 	filter "system:windows"
-		cppdialect "C++23"
 		-- staticruntime "On"
 		systemversion "latest"
 
@@ -145,16 +145,16 @@ project "Sandbox"
 		defines "MC_DEBUG"
 		runtime "Debug"
 		-- buildoptions "/MDd"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "MC_RELEASE"
 		runtime "Release"
 		-- buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "MC_DIST"
 		runtime "Release"
 		-- buildoptions "/MD"
-		optimize "On"
+		optimize "on"
