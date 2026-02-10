@@ -152,6 +152,9 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Minecraft\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Minecraft\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Minecraft.h" />
     <ClInclude Include="src\Minecraft\Application.h" />
@@ -600,6 +603,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Minecraft\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Minecraft\Application.cpp" />
     <ClCompile Include="src\Minecraft\ImGui\ImGuiBuild.cpp" />

@@ -1382,6 +1382,9 @@
     </ClInclude>
     <ClInclude Include="src\Minecraft\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Minecraft\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Minecraft\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Application.cpp">
@@ -1428,5 +1431,8 @@
     </ClCompile>
     <ClCompile Include="src\Minecraft\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

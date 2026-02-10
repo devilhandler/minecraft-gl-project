@@ -9,9 +9,7 @@
 
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
-// TEMPORARY
 #include "Minecraft/Renderer/Shader.h"
-#include "Minecraft/Renderer/Buffer.h"
 #include "Minecraft/Renderer/VertexArray.h"
 
 namespace Minecraft

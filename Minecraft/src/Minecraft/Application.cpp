@@ -1,7 +1,7 @@
 #include "mcpch.h"
 #include "Application.h"
 
-#include <glad/glad.h>
+#include "Minecraft/Renderer/Renderer.h"
 
 #include "Input.h"
 
@@ -106,7 +106,8 @@ namespace Minecraft
 		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 		
-		std::string vertexSource2{ R"(
+		// since it's the same shaders anyways
+		/*std::string vertexSource2{ R"(
 			#version 460 core
 			
 			layout(location = 0) in vec3 aPosition;
@@ -134,9 +135,9 @@ namespace Minecraft
 				FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
 				FragColor = vColor;
 			}
-		)" };
+		)" };*/
 
-		m_SquareShader.reset(new Shader(vertexSource2, fragmentSource2));
+		m_SquareShader.reset(new Shader(vertexSource, fragmentSource));
 	}
 
 	Application::~Application()
@@ -182,16 +183,27 @@ namespace Minecraft
 		//}
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
 
-			m_SquareShader->Bind();
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
+			{
+				m_SquareShader->Bind();
+				Renderer::Submit(m_SquareVA);
+
+				m_Shader->Bind();
+				Renderer::Submit(m_VertexArray);
+			}
+			Renderer::EndScene();
+
+			/*m_SquareShader->Bind();
 			m_SquareVA->Bind();
 			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, (void*)0);
 
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, (void*)0);
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, (void*)0);*/
 
 			// glUseProgram(m_ProgramID);
 

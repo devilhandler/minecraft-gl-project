@@ -10,11 +10,11 @@ namespace Minecraft
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:			MC_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::OpenGL:		return new OpenGLVertexArray();
-
-			MC_CORE_ASSERT(false, "Unknwon RendererAPI!");
-			return nullptr;
+			case RendererAPI::API::None:		MC_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL:		return new OpenGLVertexArray();
 		}
+
+		MC_CORE_ASSERT(false, "Unknwon RendererAPI!");
+		return nullptr;
 	}
 }
