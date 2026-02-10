@@ -11,6 +11,28 @@ namespace Minecraft
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
+
+	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
+	{
+		switch (type)
+		{
+			case ShaderDataType::Float:			return GL_FLOAT;
+			case ShaderDataType::Float2:		return GL_FLOAT;
+			case ShaderDataType::Float3:		return GL_FLOAT;
+			case ShaderDataType::Float4:		return GL_FLOAT;
+			case ShaderDataType::Mat3:			return GL_FLOAT;
+			case ShaderDataType::Mat4:			return GL_FLOAT;
+			case ShaderDataType::Int:			return GL_INT;
+			case ShaderDataType::Int2:			return GL_INT;
+			case ShaderDataType::Int3:			return GL_INT;
+			case ShaderDataType::Int4:			return GL_INT;
+			case ShaderDataType::Bool:			return GL_BOOL;
+		}
+
+		MC_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		return 0;
+	}
+
 	Application::Application()
 	{
 		MC_CORE_ASSERT(s_Instance, "Application already exists!");
@@ -27,22 +49,44 @@ namespace Minecraft
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		float vertices[3 * 3]
+		float vertices[3 * 7]
 		{
-			//	X		Y			Z
-				-0.5f,	-0.5f,		0.0f,
-				0.5f,	-0.5f,		0.0f,
-				0.0f,	0.5f,		0.0f
+			//	X		Y			Z		R	G		B	A
+				-0.5f,	-0.5f,		0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+				0.5f,	-0.5f,		0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
+				0.0f,	0.5f,		0.0f, 0.8f, 0.7f, 0.0f, 1.0f,
 		};
 
 		// Vertex Buffer
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		/*glGenBuffers(1, &m_VertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);*/
+		{
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "aPosition", true },
+				{ ShaderDataType::Float4, "aColor", true }
+			};
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); // or use nullptr
+			m_VertexBuffer->SetLayout(layout);
+		}
+
+		uint32_t index{ 0 };
+		const auto& layout = m_VertexBuffer->GetLayout();
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(
+				index, 
+				element.GetComponentCount(), 
+				ShaderDataTypeToOpenGLBaseType(element.Type),
+				element.Normalized ? GL_TRUE : GL_FALSE, 
+				layout.GetStride(),
+				(const void*)element.Offset	// or use nullptr
+			); 
+			index++;
+		}
+
+		// glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		// glEnableVertexAttribArray(0);
+		// glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); // or use nullptr
 		
 		// Index Buffer
 		uint32_t indices[3]
@@ -59,12 +103,15 @@ namespace Minecraft
 			#version 460 core
 			
 			layout(location = 0) in vec3 aPosition;
+			layout(location = 1) in vec4 aColor;
 			out vec3 vPosition;
+			out vec4 vColor;
 
 			void main()
 			{
 				vPosition = aPosition + 0.5;
-				gl_Position = vec4(aPosition + 0.5, 1.0f);
+				vColor = aColor;
+				gl_Position = vec4(aPosition, 1.0f);
 			}
 		)"};
 
@@ -73,10 +120,12 @@ namespace Minecraft
 			
 			layout(location = 0) out vec4 FragColor;
 			in vec3 vPosition;
+			in vec4 vColor;
 
 			void main()
 			{
 				FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
+				FragColor = vColor;
 			}
 		)"};
 
@@ -179,7 +228,7 @@ namespace Minecraft
 		//}
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
+			glClearColor(0, 0, 0, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			// glUseProgram(m_ProgramID);
