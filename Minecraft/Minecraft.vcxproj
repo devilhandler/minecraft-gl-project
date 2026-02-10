@@ -152,6 +152,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Minecraft.h" />
     <ClInclude Include="src\Minecraft\Application.h" />
     <ClInclude Include="src\Minecraft\Core.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="src\Minecraft\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Minecraft\Renderer\Renderer.h" />
     <ClInclude Include="src\Minecraft\Renderer\Shader.h" />
+    <ClInclude Include="src\Minecraft\Renderer\VertexArray.h" />
     <ClInclude Include="src\Minecraft\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -598,6 +600,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Minecraft\Application.cpp" />
     <ClCompile Include="src\Minecraft\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Minecraft\ImGui\ImGuiLayer.cpp" />
@@ -607,6 +610,7 @@
     <ClCompile Include="src\Minecraft\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
