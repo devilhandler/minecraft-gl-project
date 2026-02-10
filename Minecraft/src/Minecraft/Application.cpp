@@ -55,9 +55,36 @@ namespace Minecraft
 
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
+		std::string vertexSource{R"(
+			#version 460 core
+			
+			layout(location = 0) in vec3 aPosition;
+			out vec3 vPosition;
+
+			void main()
+			{
+				vPosition = aPosition + 0.5;
+				gl_Position = vec4(aPosition + 0.5, 1.0f);
+			}
+		)"};
+
+		std::string fragmentSource{R"(
+			#version 460 core
+			
+			layout(location = 0) out vec4 FragColor;
+			in vec3 vPosition;
+
+			void main()
+			{
+				FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
+			}
+		)"};
+
+		m_Shader.reset(new Shader(vertexSource, fragmentSource));
+
 		// Shader
 		// in the video, Cherno has the driver that already has a shader compiled but mine don't have one :P
-		m_ProgramID = glCreateProgram();
+		/*m_ProgramID = glCreateProgram();
 		const char* vertexShaderSource = "#version 460 core\n"
 			"layout (location = 0) in vec3 aPos;\n"
 			"void main()\n"
@@ -105,7 +132,7 @@ namespace Minecraft
 
 		MC_CORE_INFO("Successfully created shader!");
 		glDeleteShader(vs);
-		glDeleteShader(fs);
+		glDeleteShader(fs);*/
 		
 	}
 
@@ -113,7 +140,7 @@ namespace Minecraft
 	{
 		glDeleteBuffers(1, &m_VertexBuffer);
 		glDeleteVertexArrays(1, &m_VertexArray);
-		glDeleteProgram(m_ProgramID);
+		// glDeleteProgram(m_ProgramID);
 	}
 
 	void Application::PushLayer(Layer* layer)
@@ -155,7 +182,8 @@ namespace Minecraft
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			glUseProgram(m_ProgramID);
+			// glUseProgram(m_ProgramID);
+			m_Shader->Bind();
 			glBindVertexArray(m_VertexArray);
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)0);
 

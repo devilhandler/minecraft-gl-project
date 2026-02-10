@@ -1,8 +1,8 @@
 #include "mcpch.h"
 #include "OpenGLContext.h"
 
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <GL/gl.h>
 
 namespace Minecraft
@@ -16,15 +16,19 @@ namespace Minecraft
 
 	void OpenGLContext::Init()
 	{
-		glfwMakeContextCurrent(m_WindowHandle);
+		// If it is using the AMD iGPU it will go for the compat profile, if we use the nvidia gpu it will use the core profile
+		// why? i don't know.
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+		
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwMakeContextCurrent(m_WindowHandle);
 		int status{ gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) };
 		MC_CORE_ASSERT(status, "Failed to initialize Glad!");
 
-		MC_CORE_INFO("OpenGL Renderer: {0} {1}", (const char*)glGetString(GL_VENDOR), (const char*)glGetString(GL_RENDERER));
-		MC_CORE_INFO("Version: {0}", (const char*)glGetString(GL_VERSION));
+		MC_CORE_INFO("OpenGL Vendor: {0}", (const char*)glGetString(GL_VENDOR));
+		MC_CORE_INFO("OpenGL Renderer: {0}", (const char*)glGetString(GL_RENDERER));
+		MC_CORE_INFO("OpenGL Version: {0}", (const char*)glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()

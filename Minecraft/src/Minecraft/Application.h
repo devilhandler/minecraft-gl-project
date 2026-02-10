@@ -9,6 +9,9 @@
 
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
+// TEMPORARY
+#include "Minecraft/Renderer/Shader.h"
+
 namespace Minecraft
 {
 	class MC_API Application
@@ -35,7 +38,9 @@ namespace Minecraft
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer, m_ProgramID;
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
