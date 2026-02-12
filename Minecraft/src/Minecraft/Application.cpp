@@ -13,7 +13,6 @@ namespace Minecraft
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
-		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		MC_CORE_ASSERT(s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -22,133 +21,11 @@ namespace Minecraft
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 
 		m_ImGuiLayer = std::make_unique<ImGuiLayer>();
-
-		
-		// OpenGL related things
-		// Vertex Array
-		m_VertexArray.reset(VertexArray::Create());
-
-		// Vertex Buffer
-		float vertices[3 * 7]
-		{
-			//	X		Y			Z		R	G		B	A
-				-0.5f,	-0.5f,		0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-				0.5f,	-0.5f,		0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-				0.0f,	0.5f,		0.0f, 0.8f, 0.7f, 0.0f, 1.0f,
-		};
-
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		BufferLayout layout = {
-			{ ShaderDataType::Float3, "aPosition" },
-			{ ShaderDataType::Float4, "aColor" }
-		};
-		vertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
-		
-		// Index Buffer
-		uint32_t indices[3]{ 0, 1, 2 };
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		m_VertexArray->SetIndexBuffer(indexBuffer);
-
-		std::string vertexSource{ R"(
-			#version 460 core
-			
-			layout(location = 0) in vec3 aPosition;
-			layout(location = 1) in vec4 aColor;
-
-			uniform mat4 uViewProjection;
-
-			out vec3 vPosition;
-			out vec4 vColor;
-
-			void main()
-			{
-				vPosition = aPosition + 0.5;
-				vColor = aColor;
-				gl_Position = uViewProjection * vec4(aPosition, 1.0f);
-			}
-		)" };
-
-		std::string fragmentSource{ R"(
-			#version 460 core
-			
-			layout(location = 0) out vec4 FragColor;
-			in vec3 vPosition;
-			in vec4 vColor;
-
-			void main()
-			{
-				FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
-				FragColor = vColor;
-			}
-		)" };
-
-		m_Shader.reset(new Shader(vertexSource, fragmentSource));
-
-		// Square test
-		m_SquareVA.reset(VertexArray::Create());
-		float squareVertices[4 * 7]
-		{
-			//	X		Y			Z		R	G		B	A
-				-0.5f,	-0.5f,		0.0f, 0.2f, 0.8f, 0.2f, 1.0f,
-				0.5f,	-0.5f,		0.0f, 0.8f, 0.7f, 0.0f, 1.0f,
-				0.5f,	0.5f,		0.0f, 0.8f, 0.7f, 1.0f, 1.0f,
-				-0.5f,	0.5f,		0.0f, 0.5f, 0.5f, 0.5f, 1.0f
-		};
-		std::shared_ptr<VertexBuffer> squareVB; /*= std::make_shared<VertexBuffer>(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));*/
-		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-		squareVB->SetLayout({
-			{ ShaderDataType::Float3, "aPosition" },
-			{ ShaderDataType::Float4, "aColor" }
-			});
-		m_SquareVA->AddVertexBuffer(squareVB);
-
-		uint32_t squareIndices[6]{ 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<IndexBuffer> squareIB; /*= std::make_shared<IndexBuffer>(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));*/
-		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		m_SquareVA->SetIndexBuffer(squareIB);
-		
-		// since it's the same shaders anyways
-		/*std::string vertexSource2{ R"(
-			#version 460 core
-			
-			layout(location = 0) in vec3 aPosition;
-			layout(location = 1) in vec4 aColor;
-			out vec3 vPosition;
-			out vec4 vColor;
-
-			void main()
-			{
-				vPosition = aPosition + 0.5;
-				vColor = aColor;
-				gl_Position = vec4(aPosition, 1.0f);
-			}
-		)" };
-
-		std::string fragmentSource2{ R"(
-			#version 460 core
-			
-			layout(location = 0) out vec4 FragColor;
-			in vec3 vPosition;
-			in vec4 vColor;
-
-			void main()
-			{
-				FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
-				FragColor = vColor;
-			}
-		)" };*/
-
-		m_SquareShader.reset(new Shader(vertexSource, fragmentSource));
 	}
 
 	Application::~Application()
 	{
-		// glDeleteBuffers(1, &m_VertexBuffer);
-		// glDeleteVertexArrays(1, &m_VertexArray);
-		// glDeleteProgram(m_ProgramID);
+		
 	}
 
 	void Application::PushLayer(Layer* layer)
@@ -187,30 +64,6 @@ namespace Minecraft
 		//}
 		while (m_Running)
 		{
-
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			RenderCommand::Clear();
-
-			m_Camera.SetPosition({0.5f, 0.5f, 0.0f});
-			m_Camera.SetRotation(45.0f);
-
-			Renderer::BeginScene(m_Camera);
-			{
-				Renderer::Submit(m_SquareShader, m_SquareVA);
-				Renderer::Submit(m_Shader, m_VertexArray);
-			}
-			Renderer::EndScene();
-
-			/*m_SquareShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, (void*)0);
-
-			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, (void*)0);*/
-
-			// glUseProgram(m_ProgramID);
-
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdio.h>
 #ifdef MC_PLATFORM_WINDOWS
 
 extern Minecraft::Application* Minecraft::CreateApplication();

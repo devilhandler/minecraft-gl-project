@@ -12,6 +12,18 @@
 
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
-// Entrypoint--------------------
+// --- Renderer ----------------------
+#include "Minecraft/Renderer/Renderer.h"
+#include "Minecraft/Renderer/RenderCommand.h"
+
+#include "Minecraft/Renderer/Buffer.h"
+#include "Minecraft/Renderer/Shader.h"
+#include "Minecraft/Renderer/VertexArray.h"
+
+#include "Minecraft/Renderer/OrthographicCamera.h"
+#include "Minecraft/Renderer/RendererAPI.h"
+// -----------------------------------
+
+// --- Entrypoint --------------------
 #include "Minecraft/EntryPoint.h"
-// ------------------------------
+// -----------------------------------
