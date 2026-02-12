@@ -7,6 +7,8 @@
 #include "Minecraft/Events/Event.h"
 #include "Minecraft/Events/ApplicationEvent.h"
 
+#include "Minecraft/Core/Timestep.h"
+
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
 namespace Minecraft
@@ -29,11 +31,12 @@ namespace Minecraft
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		std::unique_ptr<ImGuiLayer> m_ImGuiLayer;
 		bool m_Running{ true };
 		LayerStack m_LayerStack;
+		float m_LastFrameTime{ 0.0f };
 	private:
 		static Application* s_Instance;
 	};

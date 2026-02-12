@@ -1386,6 +1386,7 @@
     <ClInclude Include="src\Minecraft\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Minecraft\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Minecraft\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Application.cpp">
