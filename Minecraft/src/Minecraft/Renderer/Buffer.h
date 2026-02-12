@@ -103,7 +103,7 @@ namespace Minecraft
 			}
 		}
 	private:
-		std::vector<BufferElement> m_Elements;
+		std::vector<BufferElement> m_Elements{};
 		uint32_t m_Stride{ 0 };
 	};
 

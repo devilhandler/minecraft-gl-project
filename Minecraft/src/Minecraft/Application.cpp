@@ -13,6 +13,7 @@ namespace Minecraft
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		MC_CORE_ASSERT(s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -56,6 +57,9 @@ namespace Minecraft
 			
 			layout(location = 0) in vec3 aPosition;
 			layout(location = 1) in vec4 aColor;
+
+			uniform mat4 uViewProjection;
+
 			out vec3 vPosition;
 			out vec4 vColor;
 
@@ -63,7 +67,7 @@ namespace Minecraft
 			{
 				vPosition = aPosition + 0.5;
 				vColor = aColor;
-				gl_Position = vec4(aPosition, 1.0f);
+				gl_Position = uViewProjection * vec4(aPosition, 1.0f);
 			}
 		)" };
 
@@ -187,13 +191,13 @@ namespace Minecraft
 			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
-			{
-				m_SquareShader->Bind();
-				Renderer::Submit(m_SquareVA);
+			m_Camera.SetPosition({0.5f, 0.5f, 0.0f});
+			m_Camera.SetRotation(45.0f);
 
-				m_Shader->Bind();
-				Renderer::Submit(m_VertexArray);
+			Renderer::BeginScene(m_Camera);
+			{
+				Renderer::Submit(m_SquareShader, m_SquareVA);
+				Renderer::Submit(m_Shader, m_VertexArray);
 			}
 			Renderer::EndScene();
 

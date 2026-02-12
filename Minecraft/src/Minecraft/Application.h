@@ -12,6 +12,8 @@
 #include "Minecraft/Renderer/Shader.h"
 #include "Minecraft/Renderer/VertexArray.h"
 
+#include "Minecraft/Renderer/OrthographicCamera.h"
+
 namespace Minecraft
 {
 	class MC_API Application
@@ -35,7 +37,7 @@ namespace Minecraft
 
 		std::unique_ptr<Window> m_Window;
 		std::unique_ptr<ImGuiLayer> m_ImGuiLayer;
-		bool m_Running = true;
+		bool m_Running{ true };
 		LayerStack m_LayerStack;
 
 		std::shared_ptr<VertexArray> m_VertexArray;
@@ -43,6 +45,8 @@ namespace Minecraft
 
 		std::shared_ptr<VertexArray> m_SquareVA;
 		std::shared_ptr<Shader> m_SquareShader;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
