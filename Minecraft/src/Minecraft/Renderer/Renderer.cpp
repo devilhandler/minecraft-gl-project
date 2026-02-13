@@ -1,6 +1,8 @@
 #include "mcpch.h"
 #include "Renderer.h"
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 namespace Minecraft
 {
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
@@ -22,8 +24,8 @@ namespace Minecraft
 	)
 	{
 		shader->Bind();
-		shader->UploadUniformMat4("uViewProjection", m_SceneData->ViewProjectionMatrix);
-		shader->UploadUniformMat4("uTransform", transform);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("uViewProjection", m_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("uTransform", transform);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);

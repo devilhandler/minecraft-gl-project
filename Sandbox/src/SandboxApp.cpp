@@ -1,5 +1,10 @@
 #include <Minecraft.h>
+
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <Platform/OpenGL/OpenGLShader.h>
+
+#include <imguidock/imgui.h>
 
 class ExampleLayer : public Minecraft::Layer
 {
@@ -62,14 +67,17 @@ public:
 			in vec3 vPosition;
 			in vec4 vColor;
 
+			uniform vec3 u_Color;
+
 			void main()
 			{
-				FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
-				FragColor = vColor;
+				// FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
+				// FragColor = vColor;
+				FragColor = vec4(u_Color, 1.0f);
 			}
 		)" };
 
-		m_Shader.reset(new Minecraft::Shader(vertexSource, fragmentSource));
+		m_Shader.reset(Minecraft::Shader::Create(vertexSource, fragmentSource));
 
 		// Square test
 		m_SquareVA.reset(Minecraft::VertexArray::Create());
@@ -94,38 +102,7 @@ public:
 		squareIB.reset(Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		// since it's the same shaders anyways
-		/*std::string vertexSource2{ R"(
-			#version 460 core
-
-			layout(location = 0) in vec3 aPosition;
-			layout(location = 1) in vec4 aColor;
-			out vec3 vPosition;
-			out vec4 vColor;
-
-			void main()
-			{
-				vPosition = aPosition + 0.5;
-				vColor = aColor;
-				gl_Position = vec4(aPosition, 1.0f);
-			}
-		)" };
-
-		std::string fragmentSource2{ R"(
-			#version 460 core
-
-			layout(location = 0) out vec4 FragColor;
-			in vec3 vPosition;
-			in vec4 vColor;
-
-			void main()
-			{
-				FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
-				FragColor = vColor;
-			}
-		)" };*/
-
-		m_SquareShader.reset(new Minecraft::Shader(vertexSource, fragmentSource));
+		m_SquareShader.reset(Minecraft::Shader::Create(vertexSource, fragmentSource));
 	}
 
 	void OnUpdate(Minecraft::Timestep ts) override
@@ -154,7 +131,22 @@ public:
 
 		Minecraft::Renderer::BeginScene(m_Camera);
 		{
-			static glm::mat4 scale{ glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)) };
+			glm::mat4 scale{ glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)) };
+
+			glm::vec4 redColor{ 0.8f, 0.2f, 0.3f, 1.0f };
+			glm::vec4 blueColor{ 0.2f, 0.3f, 0.8f, 1.0f };
+
+			std::shared_ptr<Minecraft::OpenGLShader> m_SquareShaderPointer{ std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareShader) };
+			std::shared_ptr<Minecraft::OpenGLShader> m_ShaderPointer{ std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_Shader) };
+
+			m_SquareShaderPointer->Bind();
+			m_ShaderPointer->Bind();
+
+			//Minecraft::MaterialRef material = new Minecraft::Material();
+			//Minecraft::MaterialInstanceRef materialInstance = new Minecraft::MaterialInstance(material);
+
+			//materialInstance->Set("u_Color", redColor);
+			//squareMesh->SetMaterial(materialInstance);
 
 			for (unsigned int y{ 0 }; y < 20; ++y)
 			{
@@ -162,6 +154,10 @@ public:
 				{
 					glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 					glm::mat4 transform{ glm::translate(glm::mat4(1.0f), pos) * scale };
+					if (x % 2 == 0)
+						m_SquareShaderPointer->UploadUniformFloat3("u_Color", m_SquareColor);
+					else
+						m_SquareShaderPointer->UploadUniformFloat3("u_Color", glm::vec3(1.0f) - m_SquareColor);
 					Minecraft::Renderer::Submit(m_SquareShader, m_SquareVA, transform);
 				}
 			}
@@ -172,7 +168,9 @@ public:
 
 	virtual void OnImGuiRender() override 
 	{
-
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Minecraft::Event& event) override
@@ -193,6 +191,8 @@ private:
 
 	float m_CameraRotation{ 0.0f };
 	float m_CameraRotationSpeed{ 180.0f };
+
+	glm::vec3 m_SquareColor{ 0.8f, 0.2f, 0.3f };
 };
 
 class Sandbox : public Minecraft::Application
