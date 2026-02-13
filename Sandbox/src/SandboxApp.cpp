@@ -1,4 +1,5 @@
 #include <Minecraft.h>
+#include <glm/gtc/matrix_transform.hpp>
 
 class ExampleLayer : public Minecraft::Layer
 {
@@ -41,6 +42,7 @@ public:
 			layout(location = 1) in vec4 aColor;
 
 			uniform mat4 uViewProjection;
+			uniform mat4 uTransform;
 
 			out vec3 vPosition;
 			out vec4 vColor;
@@ -49,7 +51,7 @@ public:
 			{
 				vPosition = aPosition + 0.5;
 				vColor = aColor;
-				gl_Position = uViewProjection * vec4(aPosition, 1.0f);
+				gl_Position = uViewProjection * uTransform * vec4(aPosition, 1.0f);
 			}
 		)" };
 
@@ -152,7 +154,17 @@ public:
 
 		Minecraft::Renderer::BeginScene(m_Camera);
 		{
-			Minecraft::Renderer::Submit(m_SquareShader, m_SquareVA);
+			static glm::mat4 scale{ glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)) };
+
+			for (unsigned int y{ 0 }; y < 20; ++y)
+			{
+				for (unsigned int x{ 0 }; x < 20; ++x)
+				{
+					glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
+					glm::mat4 transform{ glm::translate(glm::mat4(1.0f), pos) * scale };
+					Minecraft::Renderer::Submit(m_SquareShader, m_SquareVA, transform);
+				}
+			}
 			Minecraft::Renderer::Submit(m_Shader, m_VertexArray);
 		}
 		Minecraft::Renderer::EndScene();
