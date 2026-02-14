@@ -129,6 +129,7 @@ public:
 
 		m_SquareTextureShader.reset(Minecraft::Shader::Create(squareTextureVertexSource, squareTextureFragmentSource));
 		m_Texture = Minecraft::Texture2D::Create("assets/textures/grass.png");
+		m_ChernoLogoTexture = Minecraft::Texture2D::Create("assets/textures/ChernoLogo.png");
 
 		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareTextureShader)->Bind();
 		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareTextureShader)->UploadUniformInt("u_Texture", 0);
@@ -193,6 +194,8 @@ public:
 
 			m_Texture->Bind();
 			Minecraft::Renderer::Submit(m_SquareTextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+			m_ChernoLogoTexture->Bind();
+			Minecraft::Renderer::Submit(m_SquareTextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 			// Triangle
 			// Minecraft::Renderer::Submit(m_Shader, m_VertexArray);
@@ -218,7 +221,7 @@ private:
 	Minecraft::Ref<Minecraft::VertexArray> m_SquareVA;
 	Minecraft::Ref<Minecraft::Shader> m_SquareShader, m_SquareTextureShader;
 
-	Minecraft::Ref<Minecraft::Texture2D> m_Texture;
+	Minecraft::Ref<Minecraft::Texture2D> m_Texture, m_ChernoLogoTexture;
 
 	Minecraft::OrthographicCamera m_Camera;
 

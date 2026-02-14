@@ -37,11 +37,11 @@ namespace Minecraft
 
 	struct BufferElement
 	{
-		std::string Name;
+		std::string Name{};
 		ShaderDataType Type;
-		uint32_t Size;
-		uint32_t Offset;
-		bool Normalized;
+		uint32_t Size{};
+		uint32_t Offset{};
+		bool Normalized{};
 
 		BufferElement() {}
 
