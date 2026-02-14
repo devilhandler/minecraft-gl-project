@@ -25,7 +25,7 @@ public:
 				0.0f,	0.5f,		0.0f, 0.8f, 0.7f, 0.0f, 1.0f,
 		};
 
-		std::shared_ptr<Minecraft::VertexBuffer> vertexBuffer;
+		Minecraft::Ref<Minecraft::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Minecraft::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Minecraft::BufferLayout layout = {
 			{ Minecraft::ShaderDataType::Float3, "aPosition" },
@@ -36,7 +36,7 @@ public:
 
 		// Index Buffer
 		uint32_t indices[3]{ 0, 1, 2 };
-		std::shared_ptr<Minecraft::IndexBuffer> indexBuffer;
+		Minecraft::Ref<Minecraft::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Minecraft::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -89,7 +89,7 @@ public:
 				0.5f,	0.5f,		0.0f, 0.8f, 0.7f, 1.0f, 1.0f,
 				-0.5f,	0.5f,		0.0f, 0.5f, 0.5f, 0.5f, 1.0f
 		};
-		std::shared_ptr<Minecraft::VertexBuffer> squareVB; /*= std::make_shared<VertexBuffer>(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));*/
+		Minecraft::Ref<Minecraft::VertexBuffer> squareVB; /*= std::make_shared<VertexBuffer>(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));*/
 		squareVB.reset(Minecraft::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Minecraft::ShaderDataType::Float3, "aPosition" },
@@ -98,7 +98,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6]{ 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Minecraft::IndexBuffer> squareIB; /*= std::make_shared<IndexBuffer>(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));*/
+		Minecraft::Ref<Minecraft::IndexBuffer> squareIB; /*= std::make_shared<IndexBuffer>(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));*/
 		squareIB.reset(Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -136,8 +136,8 @@ public:
 			glm::vec4 redColor{ 0.8f, 0.2f, 0.3f, 1.0f };
 			glm::vec4 blueColor{ 0.2f, 0.3f, 0.8f, 1.0f };
 
-			std::shared_ptr<Minecraft::OpenGLShader> m_SquareShaderPointer{ std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareShader) };
-			std::shared_ptr<Minecraft::OpenGLShader> m_ShaderPointer{ std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_Shader) };
+			Minecraft::Ref<Minecraft::OpenGLShader> m_SquareShaderPointer{ std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareShader) };
+			Minecraft::Ref<Minecraft::OpenGLShader> m_ShaderPointer{ std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_Shader) };
 
 			m_SquareShaderPointer->Bind();
 			m_ShaderPointer->Bind();
@@ -157,7 +157,7 @@ public:
 					if (x % 2 == 0)
 						m_SquareShaderPointer->UploadUniformFloat3("u_Color", m_SquareColor);
 					else
-						m_SquareShaderPointer->UploadUniformFloat3("u_Color", glm::vec3(1.0f) - m_SquareColor);
+						m_SquareShaderPointer->UploadUniformFloat3("u_Color", glm::vec3(0.8f) - m_SquareColor);
 					Minecraft::Renderer::Submit(m_SquareShader, m_SquareVA, transform);
 				}
 			}
@@ -178,11 +178,11 @@ public:
 		
 	}
 private:
-	std::shared_ptr<Minecraft::VertexArray> m_VertexArray;
-	std::shared_ptr<Minecraft::Shader> m_Shader;
-
-	std::shared_ptr<Minecraft::VertexArray> m_SquareVA;
-	std::shared_ptr<Minecraft::Shader> m_SquareShader;
+	Minecraft::Ref<Minecraft::VertexArray> m_VertexArray;
+	Minecraft::Ref<Minecraft::Shader> m_Shader;
+	
+	Minecraft::Ref<Minecraft::VertexArray> m_SquareVA;
+	Minecraft::Ref<Minecraft::Shader> m_SquareShader;
 
 	Minecraft::OrthographicCamera m_Camera;
 
