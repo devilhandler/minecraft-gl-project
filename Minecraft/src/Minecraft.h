@@ -20,6 +20,7 @@
 
 #include "Minecraft/Renderer/Buffer.h"
 #include "Minecraft/Renderer/Shader.h"
+#include "Minecraft/Renderer/Texture.h"
 #include "Minecraft/Renderer/VertexArray.h"
 
 #include "Minecraft/Renderer/OrthographicCamera.h"

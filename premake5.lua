@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Minecraft/vendor/GLFW/include"
 IncludeDir["Glad"] = "Minecraft/vendor/Glad/include"
 IncludeDir["imguidock"] = "Minecraft/vendor/imguidock"
 IncludeDir["glm"] = "Minecraft/vendor/glm"
+IncludeDir["stb_image"] = "Minecraft/vendor/stb_image"
 
 group "Dependencies"
 	include "Minecraft/vendor/GLFW"
@@ -42,6 +43,8 @@ project "Minecraft"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -53,7 +56,8 @@ project "Minecraft"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.imguidock}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

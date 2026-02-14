@@ -19,17 +19,16 @@ public:
 		// Vertex Buffer
 		float vertices[3 * 7]
 		{
-			//	X		Y			Z		R	G		B	A
-				-0.5f,	-0.5f,		0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
-				0.5f,	-0.5f,		0.0f, 0.2f, 0.3f, 1.0f, 1.0f,
-				0.0f,	0.5f,		0.0f, 0.8f, 0.7f, 0.0f, 1.0f,
+			//	X		Y			Z	
+				-0.5f,	-0.5f,		0.0f,
+				0.5f,	-0.5f,		0.0f,
+				0.0f,	0.5f,		0.0f
 		};
 
 		Minecraft::Ref<Minecraft::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Minecraft::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Minecraft::BufferLayout layout = {
-			{ Minecraft::ShaderDataType::Float3, "aPosition" },
-			{ Minecraft::ShaderDataType::Float4, "aColor" }
+			{ Minecraft::ShaderDataType::Float3, "a_Position" }
 		};
 		vertexBuffer->SetLayout(layout);
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
@@ -43,20 +42,14 @@ public:
 		std::string vertexSource{ R"(
 			#version 460 core
 			
-			layout(location = 0) in vec3 aPosition;
-			layout(location = 1) in vec4 aColor;
+			layout(location = 0) in vec3 a_Position;
 
-			uniform mat4 uViewProjection;
-			uniform mat4 uTransform;
-
-			out vec3 vPosition;
-			out vec4 vColor;
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			void main()
 			{
-				vPosition = aPosition + 0.5;
-				vColor = aColor;
-				gl_Position = uViewProjection * uTransform * vec4(aPosition, 1.0f);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0f);
 			}
 		)" };
 
@@ -64,15 +57,11 @@ public:
 			#version 460 core
 			
 			layout(location = 0) out vec4 FragColor;
-			in vec3 vPosition;
-			in vec4 vColor;
 
 			uniform vec3 u_Color;
 
 			void main()
 			{
-				// FragColor = vec4(vPosition * 0.5f + 0.5f, 1.0f);
-				// FragColor = vColor;
 				FragColor = vec4(u_Color, 1.0f);
 			}
 		)" };
@@ -81,33 +70,73 @@ public:
 
 		// Square test
 		m_SquareVA.reset(Minecraft::VertexArray::Create());
-		float squareVertices[4 * 7]
+		float squareVertices[4 * 5]
 		{
-			//	X		Y			Z		R	G		B	A
-				-0.5f,	-0.5f,		0.0f, 0.2f, 0.8f, 0.2f, 1.0f,
-				0.5f,	-0.5f,		0.0f, 0.8f, 0.7f, 0.0f, 1.0f,
-				0.5f,	0.5f,		0.0f, 0.8f, 0.7f, 1.0f, 1.0f,
-				-0.5f,	0.5f,		0.0f, 0.5f, 0.5f, 0.5f, 1.0f
+			//	  X		  Y       Z       T1      T2
+				-0.5f,  -0.5f,   0.0f,   0.0f,   0.0f,
+				 0.5f,	-0.5f,   0.0f,   1.0f,   0.0f,
+				 0.5f,	 0.5f,   0.0f,   1.0f,   1.0f,
+				-0.5f,	 0.5f,   0.0f,   0.0f,   1.0f
 		};
-		Minecraft::Ref<Minecraft::VertexBuffer> squareVB; /*= std::make_shared<VertexBuffer>(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));*/
+		Minecraft::Ref<Minecraft::VertexBuffer> squareVB;
 		squareVB.reset(Minecraft::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ Minecraft::ShaderDataType::Float3, "aPosition" },
-			{ Minecraft::ShaderDataType::Float4, "aColor" }
+			{ Minecraft::ShaderDataType::Float3, "a_Position" },
+			{ Minecraft::ShaderDataType::Float2, "a_TexCoord" }
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6]{ 0, 1, 2, 2, 3, 0 };
-		Minecraft::Ref<Minecraft::IndexBuffer> squareIB; /*= std::make_shared<IndexBuffer>(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));*/
+		Minecraft::Ref<Minecraft::IndexBuffer> squareIB;
 		squareIB.reset(Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		m_SquareShader.reset(Minecraft::Shader::Create(vertexSource, fragmentSource));
+
+		// m_SquareTextureShader
+		std::string squareTextureVertexSource{ R"(
+			#version 460 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0f);
+			}
+		)" };
+
+		std::string squareTextureFragmentSource{ R"(
+			#version 460 core
+			
+			layout(location = 0) out vec4 FragColor;
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				FragColor = texture(u_Texture, v_TexCoord);
+			}
+		)" };
+
+		m_SquareTextureShader.reset(Minecraft::Shader::Create(squareTextureVertexSource, squareTextureFragmentSource));
+		m_Texture = Minecraft::Texture2D::Create("assets/textures/grass.png");
+
+		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareTextureShader)->Bind();
+		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareTextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Minecraft::Timestep ts) override
 	{
-		MC_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
+		// MC_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 
 		if (Minecraft::Input::IsKeyPressed(MC_KEY_A))
 			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
@@ -161,7 +190,12 @@ public:
 					Minecraft::Renderer::Submit(m_SquareShader, m_SquareVA, transform);
 				}
 			}
-			Minecraft::Renderer::Submit(m_Shader, m_VertexArray);
+
+			m_Texture->Bind();
+			Minecraft::Renderer::Submit(m_SquareTextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+			// Triangle
+			// Minecraft::Renderer::Submit(m_Shader, m_VertexArray);
 		}
 		Minecraft::Renderer::EndScene();
 	}
@@ -182,7 +216,9 @@ private:
 	Minecraft::Ref<Minecraft::Shader> m_Shader;
 	
 	Minecraft::Ref<Minecraft::VertexArray> m_SquareVA;
-	Minecraft::Ref<Minecraft::Shader> m_SquareShader;
+	Minecraft::Ref<Minecraft::Shader> m_SquareShader, m_SquareTextureShader;
+
+	Minecraft::Ref<Minecraft::Texture2D> m_Texture;
 
 	Minecraft::OrthographicCamera m_Camera;
 
