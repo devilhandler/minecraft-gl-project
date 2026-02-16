@@ -94,40 +94,7 @@ public:
 		m_SquareShader.reset(Minecraft::Shader::Create(vertexSource, fragmentSource));
 
 		// m_SquareTextureShader
-		std::string squareTextureVertexSource{ R"(
-			#version 460 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0f);
-			}
-		)" };
-
-		std::string squareTextureFragmentSource{ R"(
-			#version 460 core
-			
-			layout(location = 0) out vec4 FragColor;
-
-			in vec2 v_TexCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				FragColor = texture(u_Texture, v_TexCoord);
-			}
-		)" };
-
-		m_SquareTextureShader.reset(Minecraft::Shader::Create(squareTextureVertexSource, squareTextureFragmentSource));
+		m_SquareTextureShader.reset(Minecraft::Shader::Create("assets/shaders/Texture.glsl"));
 		m_Texture = Minecraft::Texture2D::Create("assets/textures/grass.png");
 		m_ChernoLogoTexture = Minecraft::Texture2D::Create("assets/textures/ChernoLogo.png");
 

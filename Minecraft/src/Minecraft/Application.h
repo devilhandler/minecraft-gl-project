@@ -7,8 +7,6 @@
 #include "Minecraft/Events/Event.h"
 #include "Minecraft/Events/ApplicationEvent.h"
 
-#include "Minecraft/Core/Timestep.h"
-
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
 namespace Minecraft
