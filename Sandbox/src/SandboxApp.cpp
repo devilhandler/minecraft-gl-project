@@ -66,7 +66,7 @@ public:
 			}
 		)" };
 
-		m_Shader.reset(Minecraft::Shader::Create(vertexSource, fragmentSource));
+		m_Shader = Minecraft::Shader::Create("Triangle", vertexSource, fragmentSource);
 
 		// Square test
 		m_SquareVA.reset(Minecraft::VertexArray::Create());
@@ -91,15 +91,16 @@ public:
 		squareIB.reset(Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		m_SquareShader.reset(Minecraft::Shader::Create(vertexSource, fragmentSource));
+		m_SquareShader = Minecraft::Shader::Create("SquareGridShader", vertexSource, fragmentSource);
 
 		// m_SquareTextureShader
-		m_SquareTextureShader.reset(Minecraft::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+		// m_SquareTextureShader = Minecraft::Shader::Create("assets/shaders/Texture.glsl");
 		m_Texture = Minecraft::Texture2D::Create("assets/textures/grass.png");
 		m_ChernoLogoTexture = Minecraft::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareTextureShader)->Bind();
-		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_SquareTextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Minecraft::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Minecraft::Timestep ts) override
@@ -159,10 +160,12 @@ public:
 				}
 			}
 
+			auto textureShader{ m_ShaderLibrary.Get("Texture") };
+
 			m_Texture->Bind();
-			Minecraft::Renderer::Submit(m_SquareTextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+			Minecraft::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 			m_ChernoLogoTexture->Bind();
-			Minecraft::Renderer::Submit(m_SquareTextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+			Minecraft::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 			// Triangle
 			// Minecraft::Renderer::Submit(m_Shader, m_VertexArray);
@@ -182,11 +185,12 @@ public:
 		
 	}
 private:
+	Minecraft::ShaderLibrary m_ShaderLibrary;
 	Minecraft::Ref<Minecraft::VertexArray> m_VertexArray;
 	Minecraft::Ref<Minecraft::Shader> m_Shader;
 	
 	Minecraft::Ref<Minecraft::VertexArray> m_SquareVA;
-	Minecraft::Ref<Minecraft::Shader> m_SquareShader, m_SquareTextureShader;
+	Minecraft::Ref<Minecraft::Shader> m_SquareShader;
 
 	Minecraft::Ref<Minecraft::Texture2D> m_Texture, m_ChernoLogoTexture;
 

@@ -12,11 +12,13 @@ namespace Minecraft
 	{
 	public:
 		OpenGLShader(const std::string& filepath);
-		OpenGLShader(const std::string& vertexSource, const std::string& fragmentSource);
+		OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource);
 		~OpenGLShader();
 
-		void Bind() const;
-		void Unbind() const;
+		void Bind() const override;
+		void Unbind() const override;
+
+		virtual const std::string GetName() const override { return m_Name; };
 
 		void UploadUniformInt(const std::string& name, int value);
 		
@@ -33,5 +35,6 @@ namespace Minecraft
 		void Compile(const std::unordered_map<GLenum, std::string> shaderSources);
 	private:
 		uint32_t m_RendererID{};
+		std::string m_Name{};
 	};
 }

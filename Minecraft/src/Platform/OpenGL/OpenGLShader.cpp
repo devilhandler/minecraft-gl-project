@@ -21,9 +21,16 @@ namespace Minecraft
 		std::string source{ ReadFile(filepath) };
 		auto shaderSources{ PreProcess(source) };
 		Compile(shaderSources);
+		
+		// assets/shaders/Texture.glsl
+		auto lastSlash{ filepath.find_last_of("/\\") };
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot{ filepath.rfind('.') };
+		auto count{ lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash };
+		m_Name = filepath.substr(lastSlash, count);
 	}
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSource, const std::string& fragmentSource)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource)
 	{
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSource;
@@ -39,7 +46,7 @@ namespace Minecraft
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
 		std::string result;
-		std::ifstream in(filepath, std::ios::in, std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		if (in)
 		{
 			in.seekg(0, std::ios::end);					// Pointing the pointer to the end of the file
@@ -88,11 +95,18 @@ namespace Minecraft
 		// If the shaders are successfully compiled.
 		GLuint program{ glCreateProgram() };
 
-		std::vector<GLenum> glShaderIDs(shaderSources.size());
-		for (auto&& [key, value] : shaderSources)
+		// This std::array<GLenum, n> should be the MAXIMUM shaders we SUPPORT.
+		// Since I mean it's still in-dev, we only use fragment and vertex shaders.
+		// We will have "n" as 2 for now.
+		const int n_shaders{ 2 };
+		MC_CORE_ASSERT(shaderSources.size() <= n_shaders, "We only support 2 shaders for now.");
+		std::array<GLenum, n_shaders> glShaderIDs;
+
+		int glShaderIDIndex{ 0 };
+		for (auto&& [type, source] : shaderSources)
 		{
-			GLenum type{ key };
-			const std::string& source{ value };
+			//GLenum type{ key };
+			//const std::string& source{ value };
 
 			GLuint shader{ glCreateShader(type) };
 
@@ -123,7 +137,7 @@ namespace Minecraft
 			}
 
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[glShaderIDIndex++] = shader;
 		}
 
 		// Link our program
