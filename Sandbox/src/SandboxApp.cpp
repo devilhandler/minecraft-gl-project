@@ -10,7 +10,7 @@ class ExampleLayer : public Minecraft::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
+		: Layer("Example"), m_CameraController(1280.f / 720.f, true)
 	{ 
 		// OpenGL related things
 		// Vertex Array
@@ -105,29 +105,14 @@ public:
 
 	void OnUpdate(Minecraft::Timestep ts) override
 	{
+		// Update
+		m_CameraController.OnUpdate(ts);
 		// MC_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
-
-		if (Minecraft::Input::IsKeyPressed(MC_KEY_A))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		if (Minecraft::Input::IsKeyPressed(MC_KEY_D))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		if (Minecraft::Input::IsKeyPressed(MC_KEY_S))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-		if (Minecraft::Input::IsKeyPressed(MC_KEY_W))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-
-		if (Minecraft::Input::IsKeyPressed(MC_KEY_LEFT))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		if (Minecraft::Input::IsKeyPressed(MC_KEY_RIGHT))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
 
 		Minecraft::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Minecraft::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Minecraft::Renderer::BeginScene(m_Camera);
+		Minecraft::Renderer::BeginScene(m_CameraController.GetCamera());
 		{
 			glm::mat4 scale{ glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)) };
 
@@ -182,7 +167,7 @@ public:
 
 	void OnEvent(Minecraft::Event& event) override
 	{
-		
+		m_CameraController.OnEvent(event);
 	}
 private:
 	Minecraft::ShaderLibrary m_ShaderLibrary;
@@ -194,13 +179,7 @@ private:
 
 	Minecraft::Ref<Minecraft::Texture2D> m_Texture, m_ChernoLogoTexture;
 
-	Minecraft::OrthographicCamera m_Camera;
-
-	glm::vec3 m_CameraPosition{};
-	float m_CameraMoveSpeed{ 5.0f };
-
-	float m_CameraRotation{ 0.0f };
-	float m_CameraRotationSpeed{ 180.0f };
+	Minecraft::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor{ 0.8f, 0.2f, 0.3f };
 };

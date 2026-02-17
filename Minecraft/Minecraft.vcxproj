@@ -168,6 +168,7 @@
     <ClInclude Include="src\Minecraft\LayerStack.h" />
     <ClInclude Include="src\Minecraft\Log.h" />
     <ClInclude Include="src\Minecraft\MouseButtonCodes.h" />
+    <ClInclude Include="src\Minecraft\OrthographicCameraController.h" />
     <ClInclude Include="src\Minecraft\Renderer\Buffer.h" />
     <ClInclude Include="src\Minecraft\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Minecraft\Renderer\OrthographicCamera.h" />
@@ -615,6 +616,7 @@
     <ClCompile Include="src\Minecraft\Layer.cpp" />
     <ClCompile Include="src\Minecraft\LayerStack.cpp" />
     <ClCompile Include="src\Minecraft\Log.cpp" />
+    <ClCompile Include="src\Minecraft\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\RenderCommand.cpp" />

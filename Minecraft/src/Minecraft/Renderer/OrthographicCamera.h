@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace Minecraft
 {
@@ -8,6 +8,7 @@ namespace Minecraft
 	{
 	public:
 		OrthographicCamera(float left, float right, float bottom, float top);
+		void SetProjection(float left, float right, float bottom, float top);
 
 		inline void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
 		inline const glm::vec3& GetPosition() const { return m_Position; }

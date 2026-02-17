@@ -11,6 +11,7 @@
 #include "Minecraft/Input.h"
 #include "Minecraft/KeyCodes.h"
 #include "Minecraft/MouseButtonCodes.h"
+#include "Minecraft/OrthographicCameraController.h"
 
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
