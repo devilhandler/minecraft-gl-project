@@ -168,6 +168,14 @@ public:
 	void OnEvent(Minecraft::Event& event) override
 	{
 		m_CameraController.OnEvent(event);
+
+		if (event.GetEventType() == Minecraft::EventType::WindowResize)
+		{
+			auto& re{ (Minecraft::WindowResizeEvent&)event };
+
+			//float zoom{ (float)re.GetWidth() / 1280.0f };
+			//m_CameraController.SetZoomLevel(zoom);
+		}
 	}
 private:
 	Minecraft::ShaderLibrary m_ShaderLibrary;
