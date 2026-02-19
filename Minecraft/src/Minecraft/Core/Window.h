@@ -2,7 +2,7 @@
 
 #include "mcpch.h"
 
-#include "Minecraft/Core.h"
+#include "Minecraft/Core/Core.h"
 #include "Minecraft/Events/Event.h"
 
 namespace Minecraft

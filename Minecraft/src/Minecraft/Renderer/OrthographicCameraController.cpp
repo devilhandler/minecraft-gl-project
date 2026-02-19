@@ -1,8 +1,8 @@
 #include "mcpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Minecraft/Input.h"
-#include "Minecraft/KeyCodes.h"
+#include "Minecraft/Core/Input.h"
+#include "Minecraft/Core/KeyCodes.h"
 
 namespace Minecraft
 {

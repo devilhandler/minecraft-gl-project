@@ -14,7 +14,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Minecraft/Log.h"
+#include "Minecraft/Core/Log.h"
 
 #ifdef MC_PLATFORM_WINDOWS
 	#include <Windows.h>

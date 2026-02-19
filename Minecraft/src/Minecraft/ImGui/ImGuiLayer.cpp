@@ -8,7 +8,7 @@
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
 
-#include "Minecraft/Application.h"
+#include "Minecraft/Core/Application.h"
 
 
 namespace Minecraft

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Window.h"
+#include "Minecraft/Core/Window.h"
 #include "Minecraft/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

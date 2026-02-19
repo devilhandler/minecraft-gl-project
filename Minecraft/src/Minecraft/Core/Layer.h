@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Core.h"
+#include "Minecraft/Core/Core.h"
 #include "Minecraft/Events/Event.h"
 #include "Minecraft/Core/Timestep.h"
 

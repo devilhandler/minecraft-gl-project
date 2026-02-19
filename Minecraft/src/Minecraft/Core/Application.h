@@ -3,7 +3,7 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Minecraft/LayerStack.h"
+#include "Minecraft/Core/LayerStack.h"
 #include "Minecraft/Events/Event.h"
 #include "Minecraft/Events/ApplicationEvent.h"
 

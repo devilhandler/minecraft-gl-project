@@ -2,7 +2,7 @@
 #include "WindowsInput.h"
 
 #include <GLFW/glfw3.h>	
-#include "Minecraft/Application.h"
+#include "Minecraft/Core/Application.h"
 
 namespace Minecraft
 {

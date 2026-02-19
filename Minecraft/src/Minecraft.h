@@ -2,16 +2,16 @@
 
 // For use by Minecraft applications
 
-#include "Minecraft/Application.h"
-#include "Minecraft/Log.h"
-#include "Minecraft/Layer.h"
+#include "Minecraft/Core/Application.h"
+#include "Minecraft/Core/Log.h"
+#include "Minecraft/Core/Layer.h"
 
 #include "Minecraft/Core/Timestep.h"
 
-#include "Minecraft/Input.h"
-#include "Minecraft/KeyCodes.h"
-#include "Minecraft/MouseButtonCodes.h"
-#include "Minecraft/OrthographicCameraController.h"
+#include "Minecraft/Core/Input.h"
+#include "Minecraft/Core/KeyCodes.h"
+#include "Minecraft/Core/MouseButtonCodes.h"
+#include "Minecraft/Renderer/OrthographicCameraController.h"
 
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
@@ -29,5 +29,5 @@
 // -----------------------------------
 
 // --- Entrypoint --------------------
-#include "Minecraft/EntryPoint.h"
+#include "Minecraft/Core/EntryPoint.h"
 // -----------------------------------

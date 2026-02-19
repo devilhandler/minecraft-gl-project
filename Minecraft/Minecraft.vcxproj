@@ -153,32 +153,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Minecraft.h" />
-    <ClInclude Include="src\Minecraft\Application.h" />
-    <ClInclude Include="src\Minecraft\Core.h" />
+    <ClInclude Include="src\Minecraft\Core\Application.h" />
+    <ClInclude Include="src\Minecraft\Core\Core.h" />
+    <ClInclude Include="src\Minecraft\Core\EntryPoint.h" />
+    <ClInclude Include="src\Minecraft\Core\Input.h" />
+    <ClInclude Include="src\Minecraft\Core\KeyCodes.h" />
+    <ClInclude Include="src\Minecraft\Core\Layer.h" />
+    <ClInclude Include="src\Minecraft\Core\LayerStack.h" />
+    <ClInclude Include="src\Minecraft\Core\Log.h" />
+    <ClInclude Include="src\Minecraft\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Minecraft\Core\Timestep.h" />
-    <ClInclude Include="src\Minecraft\EntryPoint.h" />
+    <ClInclude Include="src\Minecraft\Core\Window.h" />
     <ClInclude Include="src\Minecraft\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Minecraft\Events\Event.h" />
     <ClInclude Include="src\Minecraft\Events\KeyEvent.h" />
     <ClInclude Include="src\Minecraft\Events\MouseEvent.h" />
     <ClInclude Include="src\Minecraft\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Minecraft\Input.h" />
-    <ClInclude Include="src\Minecraft\KeyCodes.h" />
-    <ClInclude Include="src\Minecraft\Layer.h" />
-    <ClInclude Include="src\Minecraft\LayerStack.h" />
-    <ClInclude Include="src\Minecraft\Log.h" />
-    <ClInclude Include="src\Minecraft\MouseButtonCodes.h" />
-    <ClInclude Include="src\Minecraft\OrthographicCameraController.h" />
     <ClInclude Include="src\Minecraft\Renderer\Buffer.h" />
     <ClInclude Include="src\Minecraft\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Minecraft\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Minecraft\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Minecraft\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Minecraft\Renderer\Renderer.h" />
     <ClInclude Include="src\Minecraft\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Minecraft\Renderer\Shader.h" />
     <ClInclude Include="src\Minecraft\Renderer\Texture.h" />
     <ClInclude Include="src\Minecraft\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Minecraft\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -610,15 +610,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Minecraft\Application.cpp" />
+    <ClCompile Include="src\Minecraft\Core\Application.cpp" />
+    <ClCompile Include="src\Minecraft\Core\Layer.cpp" />
+    <ClCompile Include="src\Minecraft\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Minecraft\Core\Log.cpp" />
     <ClCompile Include="src\Minecraft\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Minecraft\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Minecraft\Layer.cpp" />
-    <ClCompile Include="src\Minecraft\LayerStack.cpp" />
-    <ClCompile Include="src\Minecraft\Log.cpp" />
-    <ClCompile Include="src\Minecraft\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\RendererAPI.cpp" />
