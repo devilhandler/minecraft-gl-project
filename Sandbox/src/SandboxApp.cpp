@@ -1,10 +1,13 @@
 #include <Minecraft.h>
+#include <Minecraft/Core/EntryPoint.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <Platform/OpenGL/OpenGLShader.h>
 
 #include <imguidock/imgui.h>
+
+#include "Sandbox2D.h"
 
 class ExampleLayer : public Minecraft::Layer
 {
@@ -14,10 +17,10 @@ public:
 	{ 
 		// OpenGL related things
 		// Vertex Array
-		m_VertexArray.reset(Minecraft::VertexArray::Create());
+		m_VertexArray = Minecraft::VertexArray::Create();
 
 		// Vertex Buffer
-		float vertices[3 * 7]
+		float vertices[3 * 3]
 		{
 			//	X		Y			Z	
 				-0.5f,	-0.5f,		0.0f,
@@ -26,7 +29,7 @@ public:
 		};
 
 		Minecraft::Ref<Minecraft::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Minecraft::VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer = Minecraft::VertexBuffer::Create(vertices, sizeof(vertices));
 		Minecraft::BufferLayout layout = {
 			{ Minecraft::ShaderDataType::Float3, "a_Position" }
 		};
@@ -36,7 +39,7 @@ public:
 		// Index Buffer
 		uint32_t indices[3]{ 0, 1, 2 };
 		Minecraft::Ref<Minecraft::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Minecraft::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		indexBuffer = Minecraft::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		std::string vertexSource{ R"(
@@ -69,7 +72,7 @@ public:
 		m_Shader = Minecraft::Shader::Create("Triangle", vertexSource, fragmentSource);
 
 		// Square test
-		m_SquareVA.reset(Minecraft::VertexArray::Create());
+		m_SquareVA = Minecraft::VertexArray::Create();
 		float squareVertices[4 * 5]
 		{
 			//	  X		  Y       Z       T1      T2
@@ -79,7 +82,7 @@ public:
 				-0.5f,	 0.5f,   0.0f,   0.0f,   1.0f
 		};
 		Minecraft::Ref<Minecraft::VertexBuffer> squareVB;
-		squareVB.reset(Minecraft::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		squareVB = Minecraft::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ Minecraft::ShaderDataType::Float3, "a_Position" },
 			{ Minecraft::ShaderDataType::Float2, "a_TexCoord" }
@@ -88,7 +91,7 @@ public:
 
 		uint32_t squareIndices[6]{ 0, 1, 2, 2, 3, 0 };
 		Minecraft::Ref<Minecraft::IndexBuffer> squareIB;
-		squareIB.reset(Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		squareIB = Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		m_SquareShader = Minecraft::Shader::Create("SquareGridShader", vertexSource, fragmentSource);
@@ -197,8 +200,8 @@ class Sandbox : public Minecraft::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
-		PushOverlay(new Minecraft::ImGuiLayer());
+		// PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()

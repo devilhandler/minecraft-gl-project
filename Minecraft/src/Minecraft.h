@@ -27,7 +27,3 @@
 #include "Minecraft/Renderer/OrthographicCamera.h"
 #include "Minecraft/Renderer/RendererAPI.h"
 // -----------------------------------
-
-// --- Entrypoint --------------------
-#include "Minecraft/Core/EntryPoint.h"
-// -----------------------------------
