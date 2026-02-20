@@ -29,6 +29,18 @@ namespace Minecraft
 		MC_CORE_INFO("OpenGL Vendor: {0}", (const char*)glGetString(GL_VENDOR));
 		MC_CORE_INFO("OpenGL Renderer: {0}", (const char*)glGetString(GL_RENDERER));
 		MC_CORE_INFO("OpenGL Version: {0}", (const char*)glGetString(GL_VERSION));
+
+		#ifdef MC_ENABLE_ASSERTS
+		int versionMajor{}, versionMinor{};
+		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
+		glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
+
+		MC_CORE_ASSERT
+		(
+			versionMajor > 4 || (versionMajor == 4 && versionMinor >= 6), 
+			"Minecraft requires OpenGL 4.6!"
+		);
+		#endif
 	}
 
 	void OpenGLContext::SwapBuffers()
