@@ -17,6 +17,7 @@
 
 // --- Renderer ----------------------
 #include "Minecraft/Renderer/Renderer.h"
+#include "Minecraft/Renderer/Renderer2D.h"
 #include "Minecraft/Renderer/RenderCommand.h"
 
 #include "Minecraft/Renderer/Buffer.h"

@@ -5,7 +5,6 @@
 #include "Minecraft/Core/Timestep.h"
 
 #include <GLFW/glfw3.h>
-#include "Input.h"
 
 namespace Minecraft
 {

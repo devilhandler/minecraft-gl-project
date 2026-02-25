@@ -81,8 +81,7 @@ public:
 				 0.5f,	 0.5f,   0.0f,   1.0f,   1.0f,
 				-0.5f,	 0.5f,   0.0f,   0.0f,   1.0f
 		};
-		Minecraft::Ref<Minecraft::VertexBuffer> squareVB;
-		squareVB = Minecraft::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
+		Minecraft::Ref<Minecraft::VertexBuffer> squareVB{ Minecraft::VertexBuffer::Create(squareVertices, sizeof(squareVertices)) };
 		squareVB->SetLayout({
 			{ Minecraft::ShaderDataType::Float3, "a_Position" },
 			{ Minecraft::ShaderDataType::Float2, "a_TexCoord" }
@@ -90,8 +89,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6]{ 0, 1, 2, 2, 3, 0 };
-		Minecraft::Ref<Minecraft::IndexBuffer> squareIB;
-		squareIB = Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
+		Minecraft::Ref<Minecraft::IndexBuffer> squareIB{ Minecraft::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)) };
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		m_SquareShader = Minecraft::Shader::Create("SquareGridShader", vertexSource, fragmentSource);
