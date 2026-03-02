@@ -193,6 +193,24 @@ private:
 	glm::vec3 m_SquareColor{ 0.8f, 0.2f, 0.3f };
 };
 
+//class Sandbox3D : public Minecraft::Layer 
+//{
+//public:
+//
+//private:
+//	Minecraft::ShaderLibrary m_ShaderLibrary;
+//	Minecraft::Ref<Minecraft::VertexArray> m_VertexArray;
+//	Minecraft::Ref<Minecraft::Shader> m_Shader;
+//
+//	Minecraft::Ref<Minecraft::VertexArray> m_SquareVA;
+//	Minecraft::Ref<Minecraft::Shader> m_SquareShader;
+//
+//	Minecraft::Ref<Minecraft::Texture2D> m_Texture;
+//	Minecraft::Mesh mesh;
+//
+//	Minecraft::CameraController m_CameraController;
+//};
+
 class Sandbox : public Minecraft::Application
 {
 public:

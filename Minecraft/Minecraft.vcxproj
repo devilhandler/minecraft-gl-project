@@ -169,6 +169,7 @@
     <ClInclude Include="src\Minecraft\Events\KeyEvent.h" />
     <ClInclude Include="src\Minecraft\Events\MouseEvent.h" />
     <ClInclude Include="src\Minecraft\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Minecraft\Renderer\3D\Camera.h" />
     <ClInclude Include="src\Minecraft\Renderer\Buffer.h" />
     <ClInclude Include="src\Minecraft\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Minecraft\Renderer\OrthographicCamera.h" />
@@ -617,6 +618,8 @@
     <ClCompile Include="src\Minecraft\Core\Log.cpp" />
     <ClCompile Include="src\Minecraft\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Minecraft\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\3D\Camera.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\3D\Mesh.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\3D\RendererAPI3D.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\OrthographicCamera.cpp" />

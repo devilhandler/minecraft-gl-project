@@ -3,8 +3,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <Platform/OpenGL/OpenGLShader.h>
-
 #include <imguidock/imgui.h>
 
 Sandbox2D::Sandbox2D()
@@ -34,39 +32,20 @@ void Sandbox2D::OnUpdate(Minecraft::Timestep ts)
 
 	Minecraft::Renderer2D::BeginScene(m_CameraController.GetCamera());
 	{
-		glm::mat4 scale{ glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)) };
-
 		for (unsigned int y{ 0 }; y < 20; ++y)
 		{
 			for (unsigned int x{ 0 }; x < 20; ++x)
 			{
 				glm::vec2 pos(x * 0.11f, y * 0.11f);
-				glm::mat4 transform{ glm::translate(glm::mat4(1.0f), glm::vec3(pos, 0.0f)) * scale };
 				if (x % 2 == 0)
-					Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4(m_SquareColor, 1.0f), transform);
+					Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4(m_SquareColor, 1.0f));
 				else
-					Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4(glm::vec3(0.8f) - m_SquareColor, 1.0f), transform);
+					Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4(glm::vec3(0.8f) - m_SquareColor, 1.0f));
 			}
 		}
 
-		//glm::mat4 scale{ glm::scale(glm::mat4(1.0f), glm::vec3(0.1f)) };
-
-		//Minecraft::Ref<Minecraft::OpenGLShader> m_ShaderPointer{ std::dynamic_pointer_cast<Minecraft::OpenGLShader>(m_Shader) };
-		//m_ShaderPointer->Bind();
-
-		//for (unsigned int y{ 0 }; y < 20; ++y)
-		//{
-		//	for (unsigned int x{ 0 }; x < 20; ++x)
-		//	{
-		//		glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
-		//		glm::mat4 transform{ glm::translate(glm::mat4(1.0f), pos) * scale };
-		//		if (x % 2 == 0)
-		//			m_ShaderPointer->UploadUniformFloat3("u_Color", m_SquareColor);
-		//		else
-		//			m_ShaderPointer->UploadUniformFloat3("u_Color", glm::vec3(0.8f) - m_SquareColor);
-		//		Minecraft::Renderer::Submit(m_Shader, m_VertexArray, transform);
-		//	}
-		//}
+		//Minecraft::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, glm::vec4(m_SquareColor, 1.0f));
+		//Minecraft::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, {0.2f, 0.3f, 0.8f, 1.0f});
 	}
 	Minecraft::Renderer2D::EndScene();
 }

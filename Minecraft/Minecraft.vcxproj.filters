@@ -1423,6 +1423,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Minecraft\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Minecraft\Renderer\3D\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Core\Application.cpp">
@@ -1502,5 +1503,7 @@
     </ClCompile>
     <ClCompile Include="src\Minecraft\Renderer\3D\RendererAPI3D.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\3D\Mesh.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\3D\Camera.cpp" />
   </ItemGroup>
 </Project>
