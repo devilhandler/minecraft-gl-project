@@ -18,6 +18,8 @@ private:
 	Minecraft::Ref<Minecraft::VertexArray> m_VertexArray;
 	Minecraft::Ref<Minecraft::Shader> m_Shader;
 
+	Minecraft::Ref<Minecraft::Texture2D> m_Texture;
+
 	Minecraft::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor{ 0.8f, 0.2f, 0.3f };

@@ -216,7 +216,7 @@ class Sandbox : public Minecraft::Application
 public:
 	Sandbox()
 	{
-		// PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
 	}
 
