@@ -1,9 +1,8 @@
 #include "mcpch.h"
-#include "RenderCommand.h"
 
-#include "Platform/OpenGL/OpenGLRendererAPI.h"
+#include "Minecraft/Renderer/RenderCommand.h"
 
 namespace Minecraft
 {
-	Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<OpenGLRendererAPI>();
+	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 }

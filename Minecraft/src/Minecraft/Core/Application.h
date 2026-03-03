@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "Minecraft/Core/Core.h"
 
-#include "Window.h"
+#include "Minecraft/Core/Window.h"
 #include "Minecraft/Core/LayerStack.h"
 #include "Minecraft/Events/Event.h"
 #include "Minecraft/Events/ApplicationEvent.h"
@@ -31,7 +31,7 @@ namespace Minecraft
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
-		Window* m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer{ nullptr };
 		bool m_Running{ true };
 		bool m_Minimized{ false };

@@ -1,7 +1,7 @@
 #include "mcpch.h"
-#include "ImGuiLayer.h"
+#include "Minecraft/ImGui/ImGuiLayer.h"
 
-#include "imgui.h"
+#include <imgui.h>
 
 // #define IMGUI_IMPL_API I don't think we need this anymore
 #include <GLFW/glfw3.h>
@@ -26,7 +26,9 @@ namespace Minecraft
 	}
 
 	void ImGuiLayer::OnAttach()
-	{	
+	{
+		MC_PROFILE_FUNCTION();
+
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -60,6 +62,8 @@ namespace Minecraft
 
 	void ImGuiLayer::OnDetach()
 	{
+		MC_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -67,6 +71,8 @@ namespace Minecraft
 
 	void ImGuiLayer::Begin()
 	{
+		MC_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -80,6 +86,8 @@ namespace Minecraft
 
 	void ImGuiLayer::End()
 	{
+		MC_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float) app.GetWindow().GetWidth(), (float) app.GetWindow().GetHeight());

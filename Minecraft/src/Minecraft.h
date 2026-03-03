@@ -2,6 +2,8 @@
 
 // For use by Minecraft applications
 
+#include "Minecraft/Core/Core.h"
+
 #include "Minecraft/Core/Application.h"
 #include "Minecraft/Core/Log.h"
 #include "Minecraft/Core/Layer.h"

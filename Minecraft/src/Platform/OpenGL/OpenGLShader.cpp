@@ -1,5 +1,5 @@
 #include "mcpch.h"
-#include "OpenGLShader.h"
+#include "Platform/OpenGL/OpenGLShader.h"
 
 #include <glad/glad.h>
 #include <fstream>
@@ -18,6 +18,8 @@ namespace Minecraft
 
 	OpenGLShader::OpenGLShader(const std::string& filepath)
 	{
+		MC_PROFILE_FUNCTION();
+
 		std::string source{ ReadFile(filepath) };
 		auto shaderSources{ PreProcess(source) };
 		Compile(shaderSources);
@@ -32,6 +34,8 @@ namespace Minecraft
 
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource)
 	{
+		MC_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSource;
 		sources[GL_FRAGMENT_SHADER] = fragmentSource;
@@ -40,11 +44,15 @@ namespace Minecraft
 
 	OpenGLShader::~OpenGLShader()
 	{
+		MC_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
+		MC_PROFILE_FUNCTION();
+
 		std::string result;
 		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		if (in)
@@ -65,6 +73,8 @@ namespace Minecraft
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		MC_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 		const char* typeToken{ "#type" };
@@ -90,6 +100,8 @@ namespace Minecraft
 
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string> shaderSources)
 	{
+		MC_PROFILE_FUNCTION();
+
 		// Get a program object.
 		// Vertex and fragment shaders will be linked to this program.
 		// If the shaders are successfully compiled.
@@ -179,11 +191,15 @@ namespace Minecraft
 
 	void OpenGLShader::Bind() const
 	{
+		MC_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Unbind() const
 	{
+		MC_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
@@ -193,21 +209,29 @@ namespace Minecraft
 
 	void OpenGLShader::SetInt(const std::string& name, const int& value)
 	{
+		MC_PROFILE_FUNCTION();
+
 		UploadUniformInt(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
+		MC_PROFILE_FUNCTION();
+
 		UploadUniformFloat3(name, value);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
+		MC_PROFILE_FUNCTION();
+
 		UploadUniformFloat4(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
+		MC_PROFILE_FUNCTION();
+
 		UploadUniformMat4(name, value);
 	}
 

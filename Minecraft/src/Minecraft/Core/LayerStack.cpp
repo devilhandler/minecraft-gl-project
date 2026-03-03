@@ -1,12 +1,8 @@
 #include "mcpch.h"
-#include "LayerStack.h"
+#include "Minecraft/Core/LayerStack.h"
 
 namespace Minecraft
 {
-	LayerStack::LayerStack()
-	{
-	}
-
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)

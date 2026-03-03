@@ -1,7 +1,7 @@
 #include "mcpch.h"
-#include "Buffer.h"
 
-#include "Renderer.h"
+#include "Minecraft/Renderer/Buffer.h"
+#include "Minecraft/Renderer/Renderer.h"
 
 #include "Platform/OpenGL/OpenGLBuffer.h"
 
@@ -12,7 +12,7 @@ namespace Minecraft
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:		MC_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLVertexBuffer>(vertices, size);
+			case RendererAPI::API::OpenGL:		return CreateRef<OpenGLVertexBuffer>(vertices, size);
 		}
 
 		MC_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -24,7 +24,7 @@ namespace Minecraft
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:		MC_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLIndexBuffer>(indices, size);
+			case RendererAPI::API::OpenGL:		return CreateRef<OpenGLIndexBuffer>(indices, size);
 		}
 
 		MC_CORE_ASSERT(false, "Unknown RendererAPI!");

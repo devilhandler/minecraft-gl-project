@@ -1,5 +1,5 @@
 #include "mcpch.h"
-#include "OrthographicCameraController.h"
+#include "Minecraft/Renderer/OrthographicCameraController.h"
 
 #include "Minecraft/Core/Input.h"
 #include "Minecraft/Core/KeyCodes.h"
@@ -16,6 +16,8 @@ namespace Minecraft
 
 	void OrthographicCameraController::OnUpdate(Timestep ts)
 	{
+		MC_PROFILE_FUNCTION();
+
 		if (Input::IsKeyPressed(MC_KEY_A))
 			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
 		if (Input::IsKeyPressed(MC_KEY_D))
@@ -40,6 +42,8 @@ namespace Minecraft
 
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
+		MC_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(MC_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(MC_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
@@ -47,6 +51,8 @@ namespace Minecraft
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
+		MC_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -55,6 +61,8 @@ namespace Minecraft
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		MC_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;

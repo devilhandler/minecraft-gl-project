@@ -1,7 +1,7 @@
 #include "mcpch.h"
-#include "Texture.h"
+#include "Minecraft/Renderer/Texture.h"
 
-#include "Renderer.h"
+#include "Minecraft/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Minecraft

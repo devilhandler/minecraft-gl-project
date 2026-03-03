@@ -1,9 +1,9 @@
 #include "mcpch.h"
-#include "Renderer2D.h"
+#include "Minecraft/Renderer/Renderer2D.h"
 
-#include "VertexArray.h"
-#include "Shader.h"
-#include "RenderCommand.h"
+#include "Minecraft/Renderer/VertexArray.h"
+#include "Minecraft/Renderer/Shader.h"
+#include "Minecraft/Renderer/RenderCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -20,6 +20,8 @@ namespace Minecraft
 
 	void Renderer2D::Init()
 	{
+		MC_PROFILE_FUNCTION();
+
 		s_Data = new Renderer2DStorage();
 
 		// Square test
@@ -57,18 +59,22 @@ namespace Minecraft
 
 	void Renderer2D::Shutdown()
 	{
+		MC_PROFILE_FUNCTION();
+
 		delete s_Data;
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
+		MC_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
 	void Renderer2D::EndScene()
 	{
-
+		MC_PROFILE_FUNCTION();
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
@@ -78,6 +84,8 @@ namespace Minecraft
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
+		MC_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->SetFloat4("u_Color", color);
 		s_Data->WhiteTexture->Bind();
 
@@ -95,6 +103,8 @@ namespace Minecraft
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture)
 	{
+		MC_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->SetFloat4("u_Color", glm::vec4(1.0f));
 		texture->Bind();
 

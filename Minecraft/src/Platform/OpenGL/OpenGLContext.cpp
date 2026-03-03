@@ -1,5 +1,5 @@
 #include "mcpch.h"
-#include "OpenGLContext.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -16,6 +16,8 @@ namespace Minecraft
 
 	void OpenGLContext::Init()
 	{
+		MC_PROFILE_FUNCTION();
+
 		// If it is using the AMD iGPU it will go for the compat profile, if we use the nvidia gpu it will use the core profile
 		// why? i don't know.
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -45,6 +47,8 @@ namespace Minecraft
 
 	void OpenGLContext::SwapBuffers()
 	{
+		MC_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 

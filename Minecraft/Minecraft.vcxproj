@@ -623,6 +623,7 @@
     <ClCompile Include="src\Minecraft\Renderer\3D\Mesh.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\3D\RendererAPI3D.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\RenderCommand.cpp" />

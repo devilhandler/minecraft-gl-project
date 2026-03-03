@@ -26,10 +26,7 @@ void Sandbox2D::OnUpdate(Minecraft::Timestep ts)
 	MC_PROFILE_FUNCTION();
 
 	// Update
-	{
-		MC_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
+	m_CameraController.OnUpdate(ts);
 
 	// Render
 	{
@@ -42,16 +39,15 @@ void Sandbox2D::OnUpdate(Minecraft::Timestep ts)
 		MC_PROFILE_SCOPE("Renderer Draw");
 		Minecraft::Renderer2D::BeginScene(m_CameraController.GetCamera());
 		{
-
 			for (unsigned int y{ 0 }; y < 20; ++y)
 			{
 				for (unsigned int x{ 0 }; x < 20; ++x)
 				{
 					glm::vec2 pos(x * 0.11f, y * 0.11f);
 					if (x % 2 == 0)
-						Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4(m_SquareColor, 1.0f));
+						Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, m_SquareColor);
 					else
-						Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4(glm::vec3(0.8f) - m_SquareColor, 1.0f));
+						Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4({0.8f, 0.8f, 0.8f, 0.0f}) - m_SquareColor);
 				}
 			}
 
@@ -68,7 +64,7 @@ void Sandbox2D::OnImGuiRender()
 
 	ImGui::Begin("Settings");
 
-	ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
 	ImGui::End();
 }

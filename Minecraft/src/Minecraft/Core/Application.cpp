@@ -1,5 +1,5 @@
 #include "mcpch.h"
-#include "Application.h"
+#include "Minecraft/Core/Application.h"
 
 #include "Minecraft/Renderer/Renderer.h"
 #include "Minecraft/Core/Timestep.h"
@@ -9,17 +9,17 @@
 namespace Minecraft
 {
 
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
+		MC_PROFILE_FUNCTION();
+
 		MC_CORE_ASSERT(s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = Window::Create();
-		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+		m_Window->SetEventCallback(MC_BIND_EVENT_FN(Application::OnEvent));
 		m_Window->SetVSync(true);
 
 		Renderer::Init();
@@ -30,26 +30,34 @@ namespace Minecraft
 
 	Application::~Application()
 	{
-		
+		MC_PROFILE_FUNCTION();
+
+		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
 	{
+		MC_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
+		MC_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(overlay);
 		overlay->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		MC_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(Application::OnWindowResize));
+		dispatcher.Dispatch<WindowCloseEvent>(MC_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(MC_BIND_EVENT_FN(Application::OnWindowResize));
 
 		// MC_CORE_INFO("{0}", e);
 
@@ -63,23 +71,35 @@ namespace Minecraft
 
 	void Application::Run()
 	{
+		MC_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			MC_PROFILE_SCOPE("RunLoop");
+
 			float time{ (float) glfwGetTime() }; // Platform::GetTime()
 			Timestep timestep{ time - m_LastFrameTime };
 			m_LastFrameTime = time;
 
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
-			}
+				{
+					MC_PROFILE_SCOPE("LayerStack OnUpdate");
 
-			// ImGui Render
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+
+				// ImGui Render
+				m_ImGuiLayer->Begin();
+				{
+					MC_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
+			}
 
 			m_Window->OnUpdate();
 		};
@@ -93,6 +113,8 @@ namespace Minecraft
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		MC_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;

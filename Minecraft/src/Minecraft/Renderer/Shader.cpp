@@ -1,7 +1,7 @@
 #include "mcpch.h"
-#include "Shader.h"
+#include "Minecraft/Renderer/Shader.h"
 
-#include "Renderer.h"
+#include "Minecraft/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Minecraft
@@ -11,7 +11,7 @@ namespace Minecraft
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:		MC_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLShader>(filepath);
+			case RendererAPI::API::OpenGL:		return CreateRef<OpenGLShader>(filepath);
 		}
 
 		MC_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -23,7 +23,7 @@ namespace Minecraft
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:		MC_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLShader>(name, vertexSource, fragmentSource);
+			case RendererAPI::API::OpenGL:		return CreateRef<OpenGLShader>(name, vertexSource, fragmentSource);
 		}
 
 		MC_CORE_ASSERT(false, "Unknown RendererAPI!");

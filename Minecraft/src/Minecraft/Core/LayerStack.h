@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Minecraft/Core/Core.h"
-#include "Layer.h"
+#include "Minecraft/Core/Layer.h"
 
 #include <vector>
 
 namespace Minecraft
 {
-	class MC_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);

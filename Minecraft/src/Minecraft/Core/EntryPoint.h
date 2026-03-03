@@ -1,4 +1,5 @@
 #pragma once
+#include "Minecraft/Core/Core.h"
 
 #ifdef MC_PLATFORM_WINDOWS
 

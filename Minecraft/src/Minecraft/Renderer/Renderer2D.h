@@ -1,7 +1,7 @@
 #pragma once
 
-#include "OrthographicCamera.h"
-#include "Texture.h"
+#include "Minecraft/Renderer/OrthographicCamera.h"
+#include "Minecraft/Renderer/Texture.h"
 
 namespace Minecraft
 {

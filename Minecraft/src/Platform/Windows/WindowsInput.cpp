@@ -1,12 +1,12 @@
 #include "mcpch.h"
-#include "WindowsInput.h"
+#include "Platform/Windows/WindowsInput.h"
 
 #include <GLFW/glfw3.h>	
 #include "Minecraft/Core/Application.h"
 
 namespace Minecraft
 {
-	Input* Input::s_Instance = new WindowsInput();
+	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
 
 	bool WindowsInput::IsKeyPressedImpl(int keycode)
 	{
