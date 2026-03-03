@@ -31,7 +31,7 @@ namespace Minecraft
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
-		std::unique_ptr<Window> m_Window;
+		Window* m_Window;
 		ImGuiLayer* m_ImGuiLayer{ nullptr };
 		bool m_Running{ true };
 		bool m_Minimized{ false };

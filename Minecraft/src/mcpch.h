@@ -15,6 +15,7 @@
 #include <unordered_set>
 
 #include "Minecraft/Core/Log.h"
+#include "Minecraft/Debug/Instrumetor.h"
 
 #ifdef MC_PLATFORM_WINDOWS
 	#include <Windows.h>

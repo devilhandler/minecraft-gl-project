@@ -164,6 +164,7 @@
     <ClInclude Include="src\Minecraft\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Minecraft\Core\Timestep.h" />
     <ClInclude Include="src\Minecraft\Core\Window.h" />
+    <ClInclude Include="src\Minecraft\Debug\Instrumetor.h" />
     <ClInclude Include="src\Minecraft\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Minecraft\Events\Event.h" />
     <ClInclude Include="src\Minecraft\Events\KeyEvent.h" />

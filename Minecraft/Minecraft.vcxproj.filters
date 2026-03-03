@@ -1424,6 +1424,7 @@
     </ClInclude>
     <ClInclude Include="src\Minecraft\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Minecraft\Renderer\3D\Camera.h" />
+    <ClInclude Include="src\Minecraft\Debug\Instrumetor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Core\Application.cpp">
