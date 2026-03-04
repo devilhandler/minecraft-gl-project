@@ -45,13 +45,13 @@ void Sandbox2D::OnUpdate(Minecraft::Timestep ts)
 				{
 					glm::vec2 pos(x * 0.11f, y * 0.11f);
 					if (x % 2 == 0)
-						Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, m_SquareColor);
+						Minecraft::Renderer2D::DrawRotatedQuad(pos, { 0.1f, 0.1f }, glm::radians(45.0f), m_SquareColor);
 					else
-						Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, glm::vec4({0.8f, 0.8f, 0.8f, 0.0f}) - m_SquareColor);
+						Minecraft::Renderer2D::DrawQuad(pos, { 0.1f, 0.1f }, m_SquareColor - glm::vec4(0.2f, 0.2f, 0.2f, 0.0f));
 				}
 			}
 
-			Minecraft::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture);
+			Minecraft::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture, 10.0f, glm::vec4(1.0f, 0.9f, 0.9f, 1.0f));
 			//Minecraft::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, {0.2f, 0.3f, 0.8f, 1.0f});
 		}
 		Minecraft::Renderer2D::EndScene();

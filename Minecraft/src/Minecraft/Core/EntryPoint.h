@@ -13,9 +13,10 @@ int main(int argc, char** argv)
 	auto app{ Minecraft::CreateApplication() };
 	MC_PROFILE_END_SESSION();
 
-	MC_PROFILE_BEGIN_SESSION("Runtime", "MinecraftProfile.Runtime.json");
+	// TODO: Fix memory leak, literally prints so much string to the json file.
+	// MC_PROFILE_BEGIN_SESSION("Runtime", "MinecraftProfile.Runtime.json");
 	app->Run();
-	MC_PROFILE_END_SESSION();
+	// MC_PROFILE_END_SESSION();
 
 	MC_PROFILE_BEGIN_SESSION("Shutdown", "MinecraftProfile.Shutdown.json");
 	delete app;

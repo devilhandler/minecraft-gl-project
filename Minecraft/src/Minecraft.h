@@ -1,6 +1,6 @@
 #pragma once
 
-// For use by Minecraft applications
+// For use by Custom Engine applications
 
 #include "Minecraft/Core/Core.h"
 

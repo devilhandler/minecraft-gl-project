@@ -9,7 +9,7 @@
 namespace Minecraft
 {
 
-	Application* Application::s_Instance = nullptr;
+	Application* Application::s_Instance = nullptr ;
 
 	Application::Application()
 	{
@@ -58,8 +58,6 @@ namespace Minecraft
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(MC_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(MC_BIND_EVENT_FN(Application::OnWindowResize));
-
-		// MC_CORE_INFO("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
