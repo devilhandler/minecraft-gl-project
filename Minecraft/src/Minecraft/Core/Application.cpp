@@ -9,7 +9,7 @@
 namespace Minecraft
 {
 
-	Application* Application::s_Instance = nullptr ;
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{

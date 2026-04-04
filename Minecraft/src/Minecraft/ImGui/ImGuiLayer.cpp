@@ -53,7 +53,7 @@ namespace Minecraft
 		}
 
 		Application& app = Application::Get();
-		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
+		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow()->GetNativeWindow());
 
 		// Setup Platform/Renderer bindings
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -90,7 +90,7 @@ namespace Minecraft
 
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
-		io.DisplaySize = ImVec2((float) app.GetWindow().GetWidth(), (float) app.GetWindow().GetHeight());
+		io.DisplaySize = ImVec2((float) app.GetWindow()->GetWidth(), (float) app.GetWindow()->GetHeight());
 
 		// Rendering
 		ImGui::Render();

@@ -21,11 +21,17 @@ namespace Minecraft
 		void SetCameraMatrix(const glm::mat4& cameraMatrix) { m_CameraMatrix = cameraMatrix; }
 		const glm::mat4& GetCameraMatrix() const { return m_CameraMatrix; }
 	private:
-
-
 		glm::vec3 m_Position{ 0.0f, 0.0f, 0.0f };
 		glm::vec3 m_Orientation{ 0.0f, 0.0f, -1.0f };
 		glm::vec3 m_UpVector{ 0.0f, 1.0f, 0.0f };
 		glm::mat4 m_CameraMatrix{ glm::mat4(1.0f) };
+
+		bool m_FirstClick{ true };
+
+		uint32_t m_Width{ 0 };
+		uint32_t m_Height{ 0 };
+
+		float m_Speed{ 0.005f };
+		float m_Sensivity{ 10.0f };
 	};
 }
