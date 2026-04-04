@@ -13,7 +13,7 @@ namespace Minecraft
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string& title = "Minecraft Engine",
+		WindowProps(const std::string& title = "RogueEngine",
 			unsigned int width = 1280,
 			unsigned int height = 720)
 			: Title(title), Height(height), Width(width) { }
