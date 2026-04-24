@@ -1426,6 +1426,7 @@
     <ClInclude Include="src\Minecraft\Renderer\3D\Camera.h" />
     <ClInclude Include="src\Minecraft\Debug\Instrumetor.h" />
     <ClInclude Include="src\Minecraft\Renderer\3D\CameraController.h" />
+    <ClInclude Include="src\Minecraft\Renderer\SubTexture2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Minecraft\Core\Application.cpp">
@@ -1509,5 +1510,6 @@
     <ClCompile Include="src\Minecraft\Renderer\3D\Camera.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\3D\CameraController.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\SubTexture2D.cpp" />
   </ItemGroup>
 </Project>

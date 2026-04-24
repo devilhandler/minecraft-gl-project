@@ -181,6 +181,7 @@
     <ClInclude Include="src\Minecraft\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Minecraft\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Minecraft\Renderer\Shader.h" />
+    <ClInclude Include="src\Minecraft\Renderer\SubTexture2D.h" />
     <ClInclude Include="src\Minecraft\Renderer\Texture.h" />
     <ClInclude Include="src\Minecraft\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
@@ -633,6 +634,7 @@
     <ClCompile Include="src\Minecraft\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Texture.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
