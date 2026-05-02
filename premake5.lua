@@ -162,3 +162,62 @@ project "Sandbox"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "on"
+
+project "RogueCanvas"
+	location "RogueCanvas"
+	kind "ConsoleApp"
+
+	language "C++"
+	cppdialect "C++23"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Minecraft/vendor/spdlog/include",
+		"Minecraft/src",
+		"Minecraft/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"Minecraft"
+	}
+
+	buildoptions "/utf-8"
+
+	filter "system:windows"
+		-- staticruntime "On"
+		systemversion "latest"
+
+		defines
+		{
+			"MC_PLATFORM_WINDOWS"
+		}
+
+	filter "configurations:Debug"
+		defines "MC_DEBUG"
+		runtime "Debug"
+		-- buildoptions "/MDd"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "MC_RELEASE"
+		runtime "Release"
+		-- buildoptions "/MD"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "MC_DIST"
+		runtime "Release"
+		-- buildoptions "/MD"
+		optimize "on"

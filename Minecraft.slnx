@@ -7,6 +7,8 @@
   </Configurations>
   <Project Path="Minecraft\Minecraft.vcxproj" Id="FEA1E9E8-6A0C-9E5F-B34A-4F051FF47BB4">
   </Project>
+  <Project Path="RogueCanvas\RogueCanvas.vcxproj" Id="03BEF53D-6F73-6E33-F867-680A641C6537">
+  </Project>
   <Project Path="Sandbox\Sandbox.vcxproj" Id="F4C124E3-60A1-A37E-69B9-2E55D5170AE0" DefaultStartup="true">
   </Project>
   <Folder Name="/Dependencies/">
