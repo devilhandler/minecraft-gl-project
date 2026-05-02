@@ -173,6 +173,7 @@
     <ClInclude Include="src\Minecraft\Renderer\3D\Camera.h" />
     <ClInclude Include="src\Minecraft\Renderer\3D\CameraController.h" />
     <ClInclude Include="src\Minecraft\Renderer\Buffer.h" />
+    <ClInclude Include="src\Minecraft\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Minecraft\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Minecraft\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Minecraft\Renderer\OrthographicCameraController.h" />
@@ -186,6 +187,7 @@
     <ClInclude Include="src\Minecraft\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
@@ -626,6 +628,7 @@
     <ClCompile Include="src\Minecraft\Renderer\3D\Mesh.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\3D\RendererAPI3D.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Minecraft\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Minecraft\Renderer\OrthographicCameraController.cpp" />
@@ -639,6 +642,7 @@
     <ClCompile Include="src\Minecraft\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />

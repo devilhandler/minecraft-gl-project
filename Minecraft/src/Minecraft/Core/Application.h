@@ -9,9 +9,11 @@
 
 #include "Minecraft/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace Minecraft
 {
-	class MC_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -23,6 +25,8 @@ namespace Minecraft
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
+
+		void Close();
 
 		inline Scope<Window>& GetWindow() { return m_Window; }
 		

@@ -18,11 +18,13 @@ private:
 	Minecraft::Ref<Minecraft::VertexArray> m_VertexArray;
 	Minecraft::Ref<Minecraft::Shader> m_Shader;
 
+	Minecraft::OrthographicCameraController m_CameraController;
+
+	// Temp
 	Minecraft::Ref<Minecraft::Texture2D> m_Texture;
 	Minecraft::Ref<Minecraft::Texture2D> m_SpriteSheet;
 	Minecraft::Ref<Minecraft::SubTexture2D> m_Stairs, m_Barrel, m_Tree;
-
-	Minecraft::OrthographicCameraController m_CameraController;
+	Minecraft::Ref<Minecraft::Framebuffer> m_Framebuffer;
 
 	glm::vec4 m_SquareColor{ 0.8f, 0.2f, 0.3f, 1.0f };
 

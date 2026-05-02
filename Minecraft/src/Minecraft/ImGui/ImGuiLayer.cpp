@@ -107,7 +107,7 @@ namespace Minecraft
 
 	void ImGuiLayer::OnImGuiRender()
 	{
-		static bool show = false;
-		ImGui::ShowDemoWindow(&show);
+		//static bool show = false;
+		//ImGui::ShowDemoWindow(&show);
 	}
 }

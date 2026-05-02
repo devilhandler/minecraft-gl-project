@@ -15,7 +15,7 @@ namespace Minecraft
 	{
 		MC_PROFILE_FUNCTION();
 
-		MC_CORE_ASSERT(s_Instance, "Application already exists!");
+		MC_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = Window::Create();
@@ -49,6 +49,11 @@ namespace Minecraft
 
 		m_LayerStack.PushOverlay(overlay);
 		overlay->OnAttach();
+	}
+
+	void Application::Close()
+	{
+		m_Running = false;
 	}
 
 	void Application::OnEvent(Event& e)

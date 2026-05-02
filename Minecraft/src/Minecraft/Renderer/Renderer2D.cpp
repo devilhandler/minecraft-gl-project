@@ -195,36 +195,7 @@ namespace Minecraft
 			++s_Data.QuadVertexBufferPtr;
 		}
 
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[0];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[1];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[2];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[3];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
 		s_Data.QuadIndexCount += 6;
-
 		++s_Data.Stats.QuadCount;
 	}
 
@@ -239,7 +210,7 @@ namespace Minecraft
 
 		constexpr size_t quadVertexCount{ 4 };
 		constexpr glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
-		constexpr glm::vec2 textureCoords[]{ {0.0f, 0.0f}, { 1.0f, 0.0f }, {1.0f, 1.0f}, {0.0f, 1.0f} };
+		constexpr glm::vec2 textureCoords[]{ { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
 
 		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
 			FlushAndReset();
@@ -377,34 +348,6 @@ namespace Minecraft
 			++s_Data.QuadVertexBufferPtr;
 		}
 
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[0];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[1];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[2];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[3];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
 		s_Data.QuadIndexCount += 6;
 
 		++s_Data.Stats.QuadCount;
@@ -462,34 +405,6 @@ namespace Minecraft
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
 			++s_Data.QuadVertexBufferPtr;
 		}
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[0];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[1];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[2];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[3];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
 
 		s_Data.QuadIndexCount += 6;
 
@@ -549,34 +464,6 @@ namespace Minecraft
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
 			++s_Data.QuadVertexBufferPtr;
 		}
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[0];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[1];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 0.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[2];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 1.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
-
-		//s_Data.QuadVertexBufferPtr->Position = transform * s_Data.QuadVertexPositions[3];
-		//s_Data.QuadVertexBufferPtr->Color = color;
-		//s_Data.QuadVertexBufferPtr->TexCoord = { 0.0f, 1.0f };
-		//s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
-		//s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		//++s_Data.QuadVertexBufferPtr;
 
 		s_Data.QuadIndexCount += 6;
 

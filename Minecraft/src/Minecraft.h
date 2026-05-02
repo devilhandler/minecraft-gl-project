@@ -24,6 +24,7 @@
 
 #include "Minecraft/Renderer/Buffer.h"
 #include "Minecraft/Renderer/Shader.h"
+#include "Minecraft/Renderer/Framebuffer.h"
 #include "Minecraft/Renderer/Texture.h"
 #include "Minecraft/Renderer/SubTexture2D.h"
 #include "Minecraft/Renderer/VertexArray.h"

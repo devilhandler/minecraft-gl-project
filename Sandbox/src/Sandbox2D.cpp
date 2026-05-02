@@ -25,6 +25,14 @@ static const char* s_MapTiles
 	"WWWWWWWWWWDDDDWWWWWWWWWW"
 };
 
+struct ImGuiDockspaceArgs
+{
+	bool                IsFullscreen = true;
+	bool                KeepWindowPadding = false; // Keep WindowPadding to help understand that DockSpace() is a widget inside the window.
+	ImGuiDockNodeFlags  DockSpaceFlags = ImGuiDockNodeFlags_None;
+};
+static ImGuiDockspaceArgs s_DockspaceArgs{ true, false, ImGuiDockNodeFlags_PassthruCentralNode };
+
 Sandbox2D::Sandbox2D()
 	: Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f)
 {
@@ -47,6 +55,11 @@ void Sandbox2D::OnAttach()
 	m_Tree = Minecraft::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128, 128 }, { 1, 2 });
 
 	m_CameraController.SetZoomLevel(5.0f);
+
+	Minecraft::FramebufferSpecification fbSpec;
+	fbSpec.Width = 1280;
+	fbSpec.Height = 720;
+	m_Framebuffer = Minecraft::Framebuffer::Create(fbSpec);
 }
 
 void Sandbox2D::OnDetach()
@@ -65,6 +78,7 @@ void Sandbox2D::OnUpdate(Minecraft::Timestep ts)
 	Minecraft::Renderer2D::ResetStats();
 	{
 		MC_PROFILE_SCOPE("Renderer Prep");
+		m_Framebuffer->Bind();
 		Minecraft::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Minecraft::RenderCommand::Clear();
 	}
@@ -135,24 +149,74 @@ void Sandbox2D::OnUpdate(Minecraft::Timestep ts)
 	Minecraft::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_Barrel);
 	Minecraft::Renderer2D::DrawQuad({ -1.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, m_Tree);
 	Minecraft::Renderer2D::EndScene();
+	m_Framebuffer->Unbind();
 }
 
 void Sandbox2D::OnImGuiRender()
 {
 	MC_PROFILE_FUNCTION();
 
-	ImGui::Begin("Settings");
+	// Note: switch this to true to enable dockspace
+	static bool dockingEnabled{ true };
+	if (dockingEnabled)
+	{
+		static bool dockspaceOpen{ true };
 
-	auto stats = Minecraft::Renderer2D::GetStats();
-	ImGui::Text("Renderer2D Stats:");
-	ImGui::Text("Draw Calls: %d", stats.DrawCalls);
-	ImGui::Text("Quads: %d", stats.QuadCount);
-	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+		ImGui::DockSpaceOverViewport(0, nullptr);
+		ImGui::Begin("Dockspace", &dockspaceOpen, ImGuiWindowFlags_MenuBar);
 
-	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::SeparatorText("Options");
+		s_DockspaceArgs.DockSpaceFlags &= ImGuiDockNodeFlags_PassthruCentralNode; // Allowed flags
+		ImGui::CheckboxFlags("Flag: PassthruCentralNode", &s_DockspaceArgs.DockSpaceFlags, ImGuiDockNodeFlags_PassthruCentralNode);
 
-	ImGui::End();
+		// Show demo options and help
+		if (ImGui::BeginMenuBar())
+		{
+			if (ImGui::BeginMenu("File"))
+			{
+				if (ImGui::MenuItem("Exit")) Minecraft::Application::Get().Close();
+				ImGui::EndMenu();
+			}
+			ImGui::EndMenuBar();
+		}
+
+		// Begin: ImGui Renderer2D Stats
+		ImGui::Begin("Settings");
+
+		auto stats = Minecraft::Renderer2D::GetStats();
+		ImGui::Text("Renderer2D Stats:");
+		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+		ImGui::Text("Quads: %d", stats.QuadCount);
+		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+
+		uint32_t textureID{ m_Framebuffer->GetColorAttachmentRendererID() };
+		ImGui::Image(textureID, ImVec2{ 1280.0f, 720.0f });
+		ImGui::End();
+		// End: ImGui Renderer2D Stats
+
+		ImGui::End();
+	}
+	else
+	{
+		// Begin: ImGui Renderer2D Stats
+		ImGui::Begin("Settings");
+
+		auto stats = Minecraft::Renderer2D::GetStats();
+		ImGui::Text("Renderer2D Stats:");
+		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+		ImGui::Text("Quads: %d", stats.QuadCount);
+		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+
+		ImGui::Image(m_Texture->GetRendererID(), ImVec2{ 256.0f, 256.0f });
+		ImGui::End();
+		// End: ImGui Renderer2D Stats
+	}
 }
 
 void Sandbox2D::OnEvent(Minecraft::Event& e)
