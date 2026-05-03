@@ -1,4 +1,4 @@
-workspace "Minecraft"
+workspace "RogueEngine"
 	architecture "x64"
 	startproject "Sandbox"
 
@@ -9,25 +9,30 @@ workspace "Minecraft"
 		"Dist"
 	}
 
+	multiprocessorcompile "on"
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Stage 1: project is RogueEngine, but folder is still Minecraft
+EngineDir = "Minecraft"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Minecraft/vendor/GLFW/include"
-IncludeDir["Glad"] = "Minecraft/vendor/Glad/include"
-IncludeDir["imguidock"] = "Minecraft/vendor/imguidock"
-IncludeDir["glm"] = "Minecraft/vendor/glm"
-IncludeDir["stb_image"] = "Minecraft/vendor/stb_image"
+IncludeDir["GLFW"] = EngineDir .. "/vendor/GLFW/include"
+IncludeDir["Glad"] = EngineDir .. "/vendor/Glad/include"
+IncludeDir["imguidock"] = EngineDir .. "/vendor/imguidock"
+IncludeDir["glm"] = EngineDir .. "/vendor/glm"
+IncludeDir["stb_image"] = EngineDir .. "/vendor/stb_image"
 
 group "Dependencies"
-	include "Minecraft/vendor/GLFW"
-	include "Minecraft/vendor/Glad"
-	include "Minecraft/vendor/imguidock"
+	include (EngineDir .. "/vendor/GLFW")
+	include (EngineDir .. "/vendor/Glad")
+	include (EngineDir .. "/vendor/imguidock")
 
 group ""
 
-project "Minecraft"
-	location "Minecraft"
+project "RogueEngine"
+	location (EngineDir)
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++23"
@@ -37,22 +42,22 @@ project "Minecraft"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "mcpch.h"
-	pchsource "Minecraft/src/mcpch.cpp"
+	pchsource (EngineDir .. "/src/mcpch.cpp")
 
 	files
 	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/vendor/stb_image/**.h",
-		"%{prj.name}/vendor/stb_image/**.cpp",
-		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		(EngineDir .. "/src/**.h"),
+		(EngineDir .. "/src/**.cpp"),
+		(EngineDir .. "/vendor/stb_image/**.h"),
+		(EngineDir .. "/vendor/stb_image/**.cpp"),
+		(EngineDir .. "/vendor/glm/glm/**.hpp"),
+		(EngineDir .. "/vendor/glm/glm/**.inl")
 	}
 
 	includedirs
 	{
-		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		EngineDir .. "/src",
+		EngineDir .. "/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.imguidock}",
@@ -71,7 +76,8 @@ project "Minecraft"
 
 	defines
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	buildoptions "/utf-8"
@@ -123,15 +129,15 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Minecraft/vendor/spdlog/include",
-		"Minecraft/src",
-		"Minecraft/vendor",
+		EngineDir .. "/vendor/spdlog/include",
+		EngineDir .. "/src",
+		EngineDir .. "/vendor",
 		"%{IncludeDir.glm}"
 	}
 
 	links
 	{
-		"Minecraft"
+		"RogueEngine"
 	}
 
 	buildoptions "/utf-8"
@@ -182,15 +188,15 @@ project "RogueCanvas"
 
 	includedirs
 	{
-		"Minecraft/vendor/spdlog/include",
-		"Minecraft/src",
-		"Minecraft/vendor",
+		EngineDir .. "/vendor/spdlog/include",
+		EngineDir .. "/src",
+		EngineDir .. "/vendor",
 		"%{IncludeDir.glm}"
 	}
 
 	links
 	{
-		"Minecraft"
+		"RogueEngine"
 	}
 
 	buildoptions "/utf-8"
