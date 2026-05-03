@@ -1,5 +1,5 @@
 #include <RogueEngine.h>
-#include <Minecraft/Core/EntryPoint.h>
+#include <Rogue/Core/EntryPoint.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>

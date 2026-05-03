@@ -2,33 +2,33 @@
 
 // For use by Custom Engine applications
 
-#include "Minecraft/Core/Core.h"
+#include "Rogue/Core/Core.h"
 
-#include "Minecraft/Core/Application.h"
-#include "Minecraft/Core/Log.h"
-#include "Minecraft/Core/Layer.h"
+#include "Rogue/Core/Application.h"
+#include "Rogue/Core/Log.h"
+#include "Rogue/Core/Layer.h"
 
-#include "Minecraft/Core/Timestep.h"
+#include "Rogue/Core/Timestep.h"
 
-#include "Minecraft/Core/Input.h"
-#include "Minecraft/Core/KeyCodes.h"
-#include "Minecraft/Core/MouseButtonCodes.h"
-#include "Minecraft/Renderer/OrthographicCameraController.h"
+#include "Rogue/Core/Input.h"
+#include "Rogue/Core/KeyCodes.h"
+#include "Rogue/Core/MouseButtonCodes.h"
+#include "Rogue/Renderer/OrthographicCameraController.h"
 
-#include "Minecraft/ImGui/ImGuiLayer.h"
+#include "Rogue/ImGui/ImGuiLayer.h"
 
 // --- Renderer ----------------------
-#include "Minecraft/Renderer/Renderer.h"
-#include "Minecraft/Renderer/Renderer2D.h"
-#include "Minecraft/Renderer/RenderCommand.h"
+#include "Rogue/Renderer/Renderer.h"
+#include "Rogue/Renderer/Renderer2D.h"
+#include "Rogue/Renderer/RenderCommand.h"
 
-#include "Minecraft/Renderer/Buffer.h"
-#include "Minecraft/Renderer/Shader.h"
-#include "Minecraft/Renderer/Framebuffer.h"
-#include "Minecraft/Renderer/Texture.h"
-#include "Minecraft/Renderer/SubTexture2D.h"
-#include "Minecraft/Renderer/VertexArray.h"
+#include "Rogue/Renderer/Buffer.h"
+#include "Rogue/Renderer/Shader.h"
+#include "Rogue/Renderer/Framebuffer.h"
+#include "Rogue/Renderer/Texture.h"
+#include "Rogue/Renderer/SubTexture2D.h"
+#include "Rogue/Renderer/VertexArray.h"
 
-#include "Minecraft/Renderer/OrthographicCamera.h"
-#include "Minecraft/Renderer/RendererAPI.h"
+#include "Rogue/Renderer/OrthographicCamera.h"
+#include "Rogue/Renderer/RendererAPI.h"
 // -----------------------------------

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Renderer/VertexArray.h"
+#include "Rogue/Renderer/VertexArray.h"
 
 namespace Minecraft
 {

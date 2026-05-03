@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Renderer/Texture.h"
+#include "Rogue/Renderer/Texture.h"
 #include <glad/glad.h>
 
 namespace Minecraft

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Minecraft/Core/Window.h"
-#include "Minecraft/Renderer/GraphicsContext.h"
+#include "Rogue/Core/Window.h"
+#include "Rogue/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 

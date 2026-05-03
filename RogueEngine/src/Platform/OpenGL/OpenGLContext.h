@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Renderer/GraphicsContext.h"
+#include "Rogue/Renderer/GraphicsContext.h"
 
 struct GLFWwindow;
 

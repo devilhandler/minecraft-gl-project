@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Renderer/Buffer.h"
+#include "Rogue/Renderer/Buffer.h"
 
 namespace Minecraft
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Renderer/Framebuffer.h"
+#include "Rogue/Renderer/Framebuffer.h"
 
 namespace Minecraft
 {

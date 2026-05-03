@@ -1,9 +1,9 @@
 #include "repch.h"
 #include "Platform/Windows/WindowsWindow.h"
 
-#include "Minecraft/Events/ApplicationEvent.h"
-#include "Minecraft/Events/KeyEvent.h"
-#include "Minecraft/Events/MouseEvent.h"
+#include "Rogue/Events/ApplicationEvent.h"
+#include "Rogue/Events/KeyEvent.h"
+#include "Rogue/Events/MouseEvent.h"
 
 namespace Minecraft
 {

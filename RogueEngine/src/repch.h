@@ -14,8 +14,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Minecraft/Core/Log.h"
-#include "Minecraft/Debug/Instrumetor.h"
+#include "Rogue/Core/Log.h"
+#include "Rogue/Debug/Instrumetor.h"
 
 #ifdef MC_PLATFORM_WINDOWS
 	#include <Windows.h>

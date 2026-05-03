@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Minecraft/Renderer/Shader.h"
+#include "Rogue/Renderer/Shader.h"
 #include <glm/glm.hpp>
 
 // TODO: REMOVE!
