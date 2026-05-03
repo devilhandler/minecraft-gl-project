@@ -60,7 +60,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Minecraft.h">
+    <ClInclude Include="src\RogueEngine.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Minecraft\Core\Application.h">
