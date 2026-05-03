@@ -6,7 +6,7 @@
 	url = https://github.com/TheCherno/GLFW
 [submodule "RogueEngine/vendor/imguidock"]
 	path = RogueEngine/vendor/imguidock
-	url = https://github.com/ocornut/imgui.git
+	url = https://github.com/devilhandler/imgui_withpremake5included.git
 	branch = docking
 [submodule "RogueEngine/vendor/glm"]
 	path = RogueEngine/vendor/glm
