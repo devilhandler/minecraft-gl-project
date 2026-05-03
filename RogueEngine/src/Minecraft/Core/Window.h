@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mcpch.h"
+#include "repch.h"
 
 #include "Minecraft/Core/Core.h"
 #include "Minecraft/Events/Event.h"

@@ -39,8 +39,8 @@ project "RogueEngine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	pchheader "mcpch.h"
-	pchsource (EngineDir .. "/src/mcpch.cpp")
+	pchheader "repch.h"
+	pchsource (EngineDir .. "/src/repch.cpp")
 
 	files
 	{

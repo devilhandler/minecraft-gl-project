@@ -60,9 +60,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\RogueEngine.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\Minecraft\Core\Application.h">
       <Filter>src\Minecraft\Core</Filter>
     </ClInclude>
@@ -186,7 +183,10 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\mcpch.h">
+    <ClInclude Include="src\RogueEngine.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\repch.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
@@ -1547,7 +1547,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\mcpch.cpp">
+    <ClCompile Include="src\repch.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
