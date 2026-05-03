@@ -6,7 +6,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-namespace Minecraft
+namespace Rogue
 {
 	static GLenum ShaderTypeFromString(const std::string& type)
 	{

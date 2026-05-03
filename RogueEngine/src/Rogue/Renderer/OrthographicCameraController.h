@@ -6,7 +6,7 @@
 #include "Rogue/Events/ApplicationEvent.h"
 #include "Rogue/Events/MouseEvent.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class OrthographicCameraController
 	{

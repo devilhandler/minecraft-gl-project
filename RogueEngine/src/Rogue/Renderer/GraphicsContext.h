@@ -2,7 +2,7 @@
 
 #include <Rogue/Core/Core.h>
 
-namespace Minecraft
+namespace Rogue
 {
 	class GraphicsContext
 	{

@@ -2,7 +2,7 @@
 
 #include "Rogue/Core/Input.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class WindowsInput : public Input
 	{

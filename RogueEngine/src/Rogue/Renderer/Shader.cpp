@@ -4,7 +4,7 @@
 #include "Rogue/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Ref<Shader> Shader::Create(const std::string& filepath)
 	{

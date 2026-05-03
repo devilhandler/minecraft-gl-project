@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 
-namespace Minecraft
+namespace Rogue
 {
 
 	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)

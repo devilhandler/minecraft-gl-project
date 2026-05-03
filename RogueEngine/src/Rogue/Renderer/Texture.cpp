@@ -4,7 +4,7 @@
 #include "Rogue/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Ref<Texture2D> Texture2D::Create(uint32_t width, uint32_t height)
 	{

@@ -3,7 +3,7 @@
 #include "Rogue/Renderer/Texture.h"
 #include <glad/glad.h>
 
-namespace Minecraft
+namespace Rogue
 {
 	class OpenGLTexture2D : public Texture2D
 	{

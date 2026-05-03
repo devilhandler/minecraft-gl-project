@@ -4,7 +4,7 @@
 #include "Rogue/Events/Event.h"
 #include "Rogue/Core/Timestep.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class Layer
 	{

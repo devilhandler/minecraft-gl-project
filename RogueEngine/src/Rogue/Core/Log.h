@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 
-namespace Minecraft
+namespace Rogue
 {
 	class Log
 	{
@@ -21,15 +21,15 @@ namespace Minecraft
 }
 
 // Core log macros
-#define MC_CORE_TRACE(...)     ::Minecraft::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define MC_CORE_INFO(...)      ::Minecraft::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define MC_CORE_WARN(...)      ::Minecraft::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define MC_CORE_ERROR(...)     ::Minecraft::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define MC_CORE_CRITICAL(...)  ::Minecraft::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define MC_CORE_TRACE(...)     ::Rogue::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define MC_CORE_INFO(...)      ::Rogue::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define MC_CORE_WARN(...)      ::Rogue::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define MC_CORE_ERROR(...)     ::Rogue::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define MC_CORE_CRITICAL(...)  ::Rogue::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
-#define MC_TRACE(...)          ::Minecraft::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define MC_INFO(...)           ::Minecraft::Log::GetClientLogger()->info(__VA_ARGS__)
-#define MC_WARN(...)           ::Minecraft::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define MC_ERROR(...)          ::Minecraft::Log::GetClientLogger()->error(__VA_ARGS__)
-#define MC_CRITICAL(...)       ::Minecraft::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define MC_TRACE(...)          ::Rogue::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define MC_INFO(...)           ::Rogue::Log::GetClientLogger()->info(__VA_ARGS__)
+#define MC_WARN(...)           ::Rogue::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define MC_ERROR(...)          ::Rogue::Log::GetClientLogger()->error(__VA_ARGS__)
+#define MC_CRITICAL(...)       ::Rogue::Log::GetClientLogger()->critical(__VA_ARGS__)

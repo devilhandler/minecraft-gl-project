@@ -11,7 +11,7 @@
 #include "Rogue/Core/Application.h"
 
 
-namespace Minecraft
+namespace Rogue
 {
 
 	ImGuiLayer::ImGuiLayer()

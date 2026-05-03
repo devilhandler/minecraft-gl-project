@@ -2,7 +2,7 @@
 
 #include "Rogue/Renderer/RendererAPI.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class OpenGLRendererAPI : public RendererAPI
 	{

@@ -3,7 +3,7 @@
 
 #include "Platform/OpenGL/OpenGLRendererAPI.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	RendererAPI::API RendererAPI::s_API = RendererAPI::API::OpenGL;
 

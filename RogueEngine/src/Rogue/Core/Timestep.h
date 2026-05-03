@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Minecraft
+namespace Rogue
 {
 	class Timestep
 	{

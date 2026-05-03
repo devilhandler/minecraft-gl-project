@@ -2,7 +2,7 @@
 
 #include "Rogue/Renderer/RenderCommand.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 }

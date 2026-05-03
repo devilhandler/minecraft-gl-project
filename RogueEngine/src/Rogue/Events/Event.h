@@ -3,7 +3,7 @@
 #include "repch.h"
 #include "Rogue/Core/Core.h"
 
-namespace Minecraft
+namespace Rogue
 {
 
 	// Events in this Minecraft project are currently blocking, meaning an event occurs it

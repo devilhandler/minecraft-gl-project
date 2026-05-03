@@ -4,7 +4,7 @@
 #include "Rogue/Renderer/Texture.h"
 #include "Rogue/Renderer/SubTexture2D.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class Renderer2D
 	{

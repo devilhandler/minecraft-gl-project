@@ -4,27 +4,6 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Minecraft">
-      <UniqueIdentifier>{D503A428-41C4-1F5F-0AFF-68DC767E643B}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Minecraft\Core">
-      <UniqueIdentifier>{4DD5F122-39B9-B278-A219-ADCB8E1C9DFA}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Minecraft\Debug">
-      <UniqueIdentifier>{0BDA3881-773B-168F-00A9-5C416C094D4E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Minecraft\Events">
-      <UniqueIdentifier>{196EDEAB-05FD-6775-AE1B-7C709A89781B}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Minecraft\ImGui">
-      <UniqueIdentifier>{BF449781-2BA6-748F-B413-BB412074AB4E}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Minecraft\Renderer">
-      <UniqueIdentifier>{1B672D14-0761-5666-F0CD-EC76DC66BCD2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Minecraft\Renderer\3D">
-      <UniqueIdentifier>{01A49779-6D66-CB03-B616-5A902218A4E1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -33,6 +12,27 @@
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rogue">
+      <UniqueIdentifier>{7E8BC6B3-EAF5-7A2A-3334-2CD09FDD587F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rogue\Core">
+      <UniqueIdentifier>{968EF865-825C-EC6B-6BF0-5C92575DC8D0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rogue\Debug">
+      <UniqueIdentifier>{74BC1625-E047-84E9-E958-07DE5563E0E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rogue\Events">
+      <UniqueIdentifier>{A29D78CB-8E96-971D-B7C8-7CA2A3207729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rogue\ImGui">
+      <UniqueIdentifier>{28277525-94B2-E2E9-9DC3-65DE09CE3EEA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rogue\Renderer">
+      <UniqueIdentifier>{E49C1183-D080-D2D8-39E1-CC2B25E4BC5A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rogue\Renderer\3D">
+      <UniqueIdentifier>{2AF1794B-965D-3546-5F51-CDA3CB7C57AE}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -60,102 +60,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Rogue\Core\Application.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\Core.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\EntryPoint.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\Input.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\KeyCodes.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\Layer.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\LayerStack.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\Log.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\MouseButtonCodes.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\Timestep.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Core\Window.h">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Debug\Instrumetor.h">
-      <Filter>src\Minecraft\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Events\ApplicationEvent.h">
-      <Filter>src\Minecraft\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Events\Event.h">
-      <Filter>src\Minecraft\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Events\KeyEvent.h">
-      <Filter>src\Minecraft\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Events\MouseEvent.h">
-      <Filter>src\Minecraft\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\ImGui\ImGuiLayer.h">
-      <Filter>src\Minecraft\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\3D\Camera.h">
-      <Filter>src\Minecraft\Renderer\3D</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\3D\CameraController.h">
-      <Filter>src\Minecraft\Renderer\3D</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\Buffer.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\Framebuffer.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\GraphicsContext.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\OrthographicCamera.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\OrthographicCameraController.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\RenderCommand.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\Renderer.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\Renderer2D.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\RendererAPI.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\Shader.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\SubTexture2D.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\Texture.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rogue\Renderer\VertexArray.h">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -182,6 +86,102 @@
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\Application.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\Core.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\EntryPoint.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\Input.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\KeyCodes.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\Layer.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\LayerStack.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\Log.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\MouseButtonCodes.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\Timestep.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Core\Window.h">
+      <Filter>src\Rogue\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Debug\Instrumetor.h">
+      <Filter>src\Rogue\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Events\ApplicationEvent.h">
+      <Filter>src\Rogue\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Events\Event.h">
+      <Filter>src\Rogue\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Events\KeyEvent.h">
+      <Filter>src\Rogue\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Events\MouseEvent.h">
+      <Filter>src\Rogue\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\ImGui\ImGuiLayer.h">
+      <Filter>src\Rogue\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\3D\Camera.h">
+      <Filter>src\Rogue\Renderer\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\3D\CameraController.h">
+      <Filter>src\Rogue\Renderer\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\Buffer.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\Framebuffer.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\GraphicsContext.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\OrthographicCamera.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\OrthographicCameraController.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\RenderCommand.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\Renderer.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\Renderer2D.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\RendererAPI.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\Shader.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\SubTexture2D.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\Texture.h">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Renderer\VertexArray.h">
+      <Filter>src\Rogue\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\RogueEngine.h">
       <Filter>src</Filter>
@@ -1451,75 +1451,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Rogue\Core\Application.cpp">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Core\Layer.cpp">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Core\LayerStack.cpp">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Core\Log.cpp">
-      <Filter>src\Minecraft\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\ImGui\ImGuiBuild.cpp">
-      <Filter>src\Minecraft\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\ImGui\ImGuiLayer.cpp">
-      <Filter>src\Minecraft\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\3D\Camera.cpp">
-      <Filter>src\Minecraft\Renderer\3D</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\3D\CameraController.cpp">
-      <Filter>src\Minecraft\Renderer\3D</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\3D\Mesh.cpp">
-      <Filter>src\Minecraft\Renderer\3D</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\3D\RendererAPI3D.cpp">
-      <Filter>src\Minecraft\Renderer\3D</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\Buffer.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\Framebuffer.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\GraphicsContext.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\OrthographicCamera.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\OrthographicCameraController.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\RenderCommand.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\Renderer.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\Renderer2D.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\RendererAPI.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\Shader.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\SubTexture2D.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\Texture.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rogue\Renderer\VertexArray.cpp">
-      <Filter>src\Minecraft\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1546,6 +1477,75 @@
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Core\Application.cpp">
+      <Filter>src\Rogue\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Core\Layer.cpp">
+      <Filter>src\Rogue\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Core\LayerStack.cpp">
+      <Filter>src\Rogue\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Core\Log.cpp">
+      <Filter>src\Rogue\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Rogue\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Rogue\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\3D\Camera.cpp">
+      <Filter>src\Rogue\Renderer\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\3D\CameraController.cpp">
+      <Filter>src\Rogue\Renderer\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\3D\Mesh.cpp">
+      <Filter>src\Rogue\Renderer\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\3D\RendererAPI3D.cpp">
+      <Filter>src\Rogue\Renderer\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\Buffer.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\Framebuffer.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\GraphicsContext.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\OrthographicCameraController.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\RenderCommand.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\Renderer.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\Renderer2D.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\RendererAPI.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\Shader.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\SubTexture2D.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\Texture.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Renderer\VertexArray.cpp">
+      <Filter>src\Rogue\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp">
       <Filter>src</Filter>

@@ -5,7 +5,7 @@
 
 #include "Platform/OpenGL/OpenGLFramebuffer.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Ref<Framebuffer> Framebuffer::Create(const FramebufferSpecification& spec)
 	{

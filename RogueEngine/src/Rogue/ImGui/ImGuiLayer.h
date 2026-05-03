@@ -6,7 +6,7 @@
 #include "Rogue/Events/KeyEvent.h"
 #include "Rogue/Events/MouseEvent.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class ImGuiLayer : public Layer
 	{

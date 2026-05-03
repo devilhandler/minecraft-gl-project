@@ -5,7 +5,7 @@
 #include "Rogue/Core/Core.h"
 #include "Rogue/Events/Event.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	struct WindowProps
 	{

@@ -11,7 +11,7 @@
 
 int main(int argc, char** argv);
 
-namespace Minecraft
+namespace Rogue
 {
 	class Application
 	{

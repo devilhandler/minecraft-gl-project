@@ -6,7 +6,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Minecraft
+namespace Rogue
 {
 
 	Application* Application::s_Instance = nullptr;

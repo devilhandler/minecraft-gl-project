@@ -3,7 +3,7 @@
 
 #include <stb_image.h>
 
-namespace Minecraft
+namespace Rogue
 {
 	OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height)
 		: m_Width(width), m_Height(height)

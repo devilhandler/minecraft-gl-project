@@ -5,7 +5,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Minecraft
+namespace Rogue
 {
 	class WindowsWindow : public Window
 	{

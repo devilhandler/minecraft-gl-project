@@ -1,7 +1,7 @@
 #include "repch.h"
 #include "Rogue/Core/LayerStack.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	LayerStack::~LayerStack()
 	{

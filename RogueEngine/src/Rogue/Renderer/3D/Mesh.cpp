@@ -1,6 +1,6 @@
 #include "repch.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	
 }

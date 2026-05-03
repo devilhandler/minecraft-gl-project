@@ -3,14 +3,14 @@
 
 #ifdef MC_PLATFORM_WINDOWS
 
-extern Minecraft::Application* Minecraft::CreateApplication();
+extern Rogue::Application* Rogue::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	Minecraft::Log::Init();
+	Rogue::Log::Init();
 	
 	MC_PROFILE_BEGIN_SESSION("Startup", "MinecraftProfile.Startup.json");
-	auto app{ Minecraft::CreateApplication() };
+	auto app{ Rogue::CreateApplication() };
 	MC_PROFILE_END_SESSION();
 
 	// TODO: Fix memory leak, literally prints so much string to the json file.

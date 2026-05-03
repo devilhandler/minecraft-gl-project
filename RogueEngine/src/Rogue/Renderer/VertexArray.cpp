@@ -4,7 +4,7 @@
 #include "Rogue/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Ref<VertexArray> VertexArray::Create()
 	{

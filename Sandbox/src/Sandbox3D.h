@@ -2,7 +2,7 @@
 
 #include <RogueEngine.h>
 
-class Sandbox3D : public Minecraft::Layer 
+class Sandbox3D : public Rogue::Layer 
 {
 public:
 	Sandbox3D();
@@ -11,14 +11,14 @@ public:
 	virtual void OnAttach() override;
 	virtual void OnDetach() override;
 
-	void OnUpdate(Minecraft::Timestep ts) override;
+	void OnUpdate(Rogue::Timestep ts) override;
 	virtual void OnImGuiRender() override;
-	void OnEvent(Minecraft::Event& e) override;
+	void OnEvent(Rogue::Event& e) override;
 private:
-	Minecraft::Ref<Minecraft::VertexArray> m_VertexArray;
-	Minecraft::Ref<Minecraft::Shader> m_Shader;
+	Rogue::Ref<Rogue::VertexArray> m_VertexArray;
+	Rogue::Ref<Rogue::Shader> m_Shader;
 
-	Minecraft::Ref<Minecraft::Texture2D> m_Texture;
+	Rogue::Ref<Rogue::Texture2D> m_Texture;
 
-	// Minecraft::Ref<Minecraft::CameraController> m_Camera;
+	// Rogue::Ref<Rogue::CameraController> m_Camera;
 };

@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-namespace Minecraft
+namespace Rogue
 {
 	class Camera
 	{

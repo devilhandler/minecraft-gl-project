@@ -5,7 +5,7 @@
 #include "Rogue/Events/KeyEvent.h"
 #include "Rogue/Events/MouseEvent.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	static uint8_t s_GLFWWindowCount{ 0 };
 

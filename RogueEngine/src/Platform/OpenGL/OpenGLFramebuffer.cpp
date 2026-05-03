@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 
-namespace Minecraft
+namespace Rogue
 {
 	OpenGLFramebuffer::OpenGLFramebuffer(const FramebufferSpecification& spec) 
 		: m_Specification(spec)

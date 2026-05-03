@@ -5,7 +5,7 @@
 #include "Rogue/Renderer/OrthographicCamera.h"
 #include "Rogue/Renderer/Shader.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class Renderer
 	{

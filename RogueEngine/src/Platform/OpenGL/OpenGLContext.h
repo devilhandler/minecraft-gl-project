@@ -4,7 +4,7 @@
 
 struct GLFWwindow;
 
-namespace Minecraft
+namespace Rogue
 {
 	class OpenGLContext : public GraphicsContext
 	{

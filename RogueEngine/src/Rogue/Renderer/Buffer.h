@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-namespace Minecraft
+namespace Rogue
 {
 	enum class ShaderDataType
 	{

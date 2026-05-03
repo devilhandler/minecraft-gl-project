@@ -2,7 +2,7 @@
 
 #include <RogueEngine.h>
 
-class Sandbox2D : public Minecraft::Layer
+class Sandbox2D : public Rogue::Layer
 {
 public:
 	Sandbox2D();
@@ -11,23 +11,23 @@ public:
 	virtual void OnAttach() override;
 	virtual void OnDetach() override;
 
-	void OnUpdate(Minecraft::Timestep ts) override;
+	void OnUpdate(Rogue::Timestep ts) override;
 	virtual void OnImGuiRender() override;
-	void OnEvent(Minecraft::Event& e) override;
+	void OnEvent(Rogue::Event& e) override;
 private:
-	Minecraft::Ref<Minecraft::VertexArray> m_VertexArray;
-	Minecraft::Ref<Minecraft::Shader> m_Shader;
+	Rogue::Ref<Rogue::VertexArray> m_VertexArray;
+	Rogue::Ref<Rogue::Shader> m_Shader;
 
-	Minecraft::OrthographicCameraController m_CameraController;
+	Rogue::OrthographicCameraController m_CameraController;
 
 	// Temp
-	Minecraft::Ref<Minecraft::Texture2D> m_Texture;
-	Minecraft::Ref<Minecraft::Texture2D> m_SpriteSheet;
-	Minecraft::Ref<Minecraft::SubTexture2D> m_Stairs, m_Barrel, m_Tree;
-	Minecraft::Ref<Minecraft::Framebuffer> m_Framebuffer;
+	Rogue::Ref<Rogue::Texture2D> m_Texture;
+	Rogue::Ref<Rogue::Texture2D> m_SpriteSheet;
+	Rogue::Ref<Rogue::SubTexture2D> m_Stairs, m_Barrel, m_Tree;
+	Rogue::Ref<Rogue::Framebuffer> m_Framebuffer;
 
 	glm::vec4 m_SquareColor{ 0.8f, 0.2f, 0.3f, 1.0f };
 
 	uint32_t m_MapWidth, m_MapHeight;
-	std::unordered_map<char, Minecraft::Ref<Minecraft::SubTexture2D>> s_TextureMap;
+	std::unordered_map<char, Rogue::Ref<Rogue::SubTexture2D>> s_TextureMap;
 };

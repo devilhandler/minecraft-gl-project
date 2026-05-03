@@ -6,7 +6,7 @@
 // TODO: REMOVE!
 typedef unsigned int GLenum;
 
-namespace Minecraft
+namespace Rogue
 {
 	class OpenGLShader : public Shader
 	{

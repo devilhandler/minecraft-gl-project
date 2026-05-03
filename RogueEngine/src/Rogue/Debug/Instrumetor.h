@@ -21,7 +21,7 @@
 
 #include <thread>
 
-namespace Minecraft {
+namespace Rogue {
 	struct ProfileResult
 	{
 		std::string Name;
@@ -138,9 +138,9 @@ namespace Minecraft {
 
 #define MC_PROFILE 1
 #ifdef MC_PROFILE
-#define MC_PROFILE_BEGIN_SESSION(name, filepath) ::Minecraft::Instrumentor::Get().BeginSession(name, filepath)
-#define MC_PROFILE_END_SESSION() ::Minecraft::Instrumentor::Get().EndSession()
-#define MC_PROFILE_SCOPE(name) ::Minecraft::InstrumentationTimer timer##__LINE__(name);
+#define MC_PROFILE_BEGIN_SESSION(name, filepath) ::Rogue::Instrumentor::Get().BeginSession(name, filepath)
+#define MC_PROFILE_END_SESSION() ::Rogue::Instrumentor::Get().EndSession()
+#define MC_PROFILE_SCOPE(name) ::Rogue::InstrumentationTimer timer##__LINE__(name);
 #define MC_PROFILE_FUNCTION() MC_PROFILE_SCOPE(__FUNCSIG__)
 #else
 #define MC_PROFILE_BEGIN_SESSION(name, filepath)

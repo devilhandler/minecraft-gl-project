@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <GL/gl.h>
 
-namespace Minecraft
+namespace Rogue
 {
 
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)

@@ -4,7 +4,7 @@
 #include "Rogue/Core/Input.h"
 #include "Rogue/Core/KeyCodes.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)
 		: m_AspectRatio(aspectRatio),

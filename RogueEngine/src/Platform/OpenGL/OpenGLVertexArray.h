@@ -2,7 +2,7 @@
 
 #include "Rogue/Renderer/VertexArray.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class OpenGLVertexArray : public VertexArray
 	{

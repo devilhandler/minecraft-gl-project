@@ -5,7 +5,7 @@
 
 #include <vector>
 
-namespace Minecraft
+namespace Rogue
 {
 	class LayerStack
 	{

@@ -2,7 +2,7 @@
 
 #include "Rogue/Renderer/Buffer.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class OpenGLVertexBuffer : public VertexBuffer
 	{

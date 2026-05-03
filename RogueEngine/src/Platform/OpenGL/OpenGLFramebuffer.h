@@ -2,7 +2,7 @@
 
 #include "Rogue/Renderer/Framebuffer.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class OpenGLFramebuffer : public Framebuffer
 	{

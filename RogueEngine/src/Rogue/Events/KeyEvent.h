@@ -2,7 +2,7 @@
 
 #include "Rogue/Events/Event.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	class KeyEvent : public Event
 	{

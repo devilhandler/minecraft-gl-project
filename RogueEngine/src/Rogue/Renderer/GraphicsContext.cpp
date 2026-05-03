@@ -4,7 +4,7 @@
 #include "Rogue/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLContext.h"
 
-namespace Minecraft {
+namespace Rogue {
 
 	Scope<GraphicsContext> GraphicsContext::Create(void* window)
 	{

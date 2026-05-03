@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>	
 #include "Rogue/Core/Application.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
 

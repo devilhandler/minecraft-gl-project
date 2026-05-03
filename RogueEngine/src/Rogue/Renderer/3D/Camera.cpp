@@ -1,7 +1,7 @@
 #include "repch.h"
 #include "Camera.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Camera::Camera(uint32_t width, uint32_t height, const glm::vec3& cameraPosition)
 	{

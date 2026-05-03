@@ -2,7 +2,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace Minecraft
+namespace Rogue
 {
 	class OrthographicCamera
 	{

@@ -3,7 +3,7 @@
 #include "Rogue/Renderer/Renderer.h"
 #include "Rogue/Renderer/Renderer2D.h"
 
-namespace Minecraft
+namespace Rogue
 {
 	Scope<Renderer::SceneData> Renderer::m_SceneData = CreateScope<Renderer::SceneData>();
 
@@ -36,8 +36,8 @@ namespace Minecraft
 	}
 
 	void Renderer::Submit(
-		const Minecraft::Ref<Shader> shader,
-		const Minecraft::Ref<VertexArray>& vertexArray,
+		const Rogue::Ref<Shader> shader,
+		const Rogue::Ref<VertexArray>& vertexArray,
 		const glm::mat4& transform
 	)
 	{
