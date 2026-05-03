@@ -12,9 +12,7 @@ workspace "RogueEngine"
 	multiprocessorcompile "on"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
--- Stage 1: project is RogueEngine, but folder is still Minecraft
-EngineDir = "Minecraft"
+EngineDir = "RogueEngine"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}

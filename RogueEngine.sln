@@ -5,15 +5,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{53E47842-3FC8-3998-A828-34EB942B241A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "Minecraft\vendor\GLFW\GLFW.vcxproj", "{154B857C-0182-860D-AA6E-6C109684020F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "RogueEngine\vendor\GLFW\GLFW.vcxproj", "{154B857C-0182-860D-AA6E-6C109684020F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Glad", "Minecraft\vendor\Glad\Glad.vcxproj", "{BDD6857C-A90D-870D-52FA-6C103E10030F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Glad", "RogueEngine\vendor\Glad\Glad.vcxproj", "{BDD6857C-A90D-870D-52FA-6C103E10030F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imguidock", "Minecraft\vendor\imguidock\imguidock.vcxproj", "{41536D62-ADBD-21D9-F6FB-D27E62A5FF2D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imguidock", "RogueEngine\vendor\imguidock\imguidock.vcxproj", "{41536D62-ADBD-21D9-F6FB-D27E62A5FF2D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RogueCanvas", "RogueCanvas\RogueCanvas.vcxproj", "{03BEF53D-6F73-6E33-F867-680A641C6537}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RogueEngine", "Minecraft\RogueEngine.vcxproj", "{7D418743-E9F6-FF38-72EB-F90FDE9FF63C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RogueEngine", "RogueEngine\RogueEngine.vcxproj", "{7D418743-E9F6-FF38-72EB-F90FDE9FF63C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

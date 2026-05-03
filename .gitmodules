@@ -4,10 +4,10 @@
 [submodule "GLFW"]
 	path = GLFW
 	url = https://github.com/TheCherno/GLFW
-[submodule "Minecraft/vendor/imguidock"]
-	path = Minecraft/vendor/imguidock
+[submodule "RogueEngine/vendor/imguidock"]
+	path = RogueEngine/vendor/imguidock
 	url = https://github.com/ocornut/imgui.git
 	branch = docking
-[submodule "Minecraft/vendor/glm"]
-	path = Minecraft/vendor/glm
+[submodule "RogueEngine/vendor/glm"]
+	path = RogueEngine/vendor/glm
 	url = https://github.com/g-truc/glm.git

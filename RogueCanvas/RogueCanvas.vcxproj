@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>MC_PLATFORM_WINDOWS;MC_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Minecraft\vendor\spdlog\include;..\Minecraft\src;..\Minecraft\vendor;..\Minecraft\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\RogueEngine\vendor\spdlog\include;..\RogueEngine\src;..\RogueEngine\vendor;..\RogueEngine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -101,7 +101,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>MC_PLATFORM_WINDOWS;MC_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Minecraft\vendor\spdlog\include;..\Minecraft\src;..\Minecraft\vendor;..\Minecraft\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\RogueEngine\vendor\spdlog\include;..\RogueEngine\src;..\RogueEngine\vendor;..\RogueEngine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -126,7 +126,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>MC_PLATFORM_WINDOWS;MC_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Minecraft\vendor\spdlog\include;..\Minecraft\src;..\Minecraft\vendor;..\Minecraft\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\RogueEngine\vendor\spdlog\include;..\RogueEngine\src;..\RogueEngine\vendor;..\RogueEngine\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -154,7 +154,7 @@
     <ClCompile Include="src\RogueCanvasApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Minecraft\RogueEngine.vcxproj">
+    <ProjectReference Include="..\RogueEngine\RogueEngine.vcxproj">
       <Project>{7D418743-E9F6-FF38-72EB-F90FDE9FF63C}</Project>
     </ProjectReference>
   </ItemGroup>
