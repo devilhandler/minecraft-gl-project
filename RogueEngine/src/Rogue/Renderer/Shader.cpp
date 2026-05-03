@@ -10,11 +10,11 @@ namespace Rogue
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::API::None:		MC_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
+			case RendererAPI::API::None:		RE_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
 			case RendererAPI::API::OpenGL:		return CreateRef<OpenGLShader>(filepath);
 		}
 
-		MC_CORE_ASSERT(false, "Unknown RendererAPI!");
+		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 
@@ -22,17 +22,17 @@ namespace Rogue
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::API::None:		MC_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
+			case RendererAPI::API::None:		RE_CORE_ASSERT(false, "RendererAPI: None is currently not supported!"); return nullptr;
 			case RendererAPI::API::OpenGL:		return CreateRef<OpenGLShader>(name, vertexSource, fragmentSource);
 		}
 
-		MC_CORE_ASSERT(false, "Unknown RendererAPI!");
+		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 
 	void ShaderLibrary::Add(const std::string& name, const Ref<Shader>& shader)
 	{
-		MC_CORE_ASSERT(!Exists(name), "Shader already exists!");
+		RE_CORE_ASSERT(!Exists(name), "Shader already exists!");
 		m_Shaders[name] = shader;
 	}
 
@@ -58,7 +58,7 @@ namespace Rogue
 
 	Ref<Shader> ShaderLibrary::Get(const std::string& name)
 	{
-		MC_CORE_ASSERT(Exists(name), "Shader not found!");
+		RE_CORE_ASSERT(Exists(name), "Shader not found!");
 		return m_Shaders[name];
 	}
 

@@ -12,7 +12,7 @@ namespace Rogue
 
 	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
@@ -21,7 +21,7 @@ namespace Rogue
 
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
@@ -30,21 +30,21 @@ namespace Rogue
 
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
 	void OpenGLVertexBuffer::Bind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 
 	void OpenGLVertexBuffer::Unbind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
@@ -62,7 +62,7 @@ namespace Rogue
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
 		: m_Count(count)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
@@ -71,21 +71,21 @@ namespace Rogue
 
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glDeleteBuffers(1, &m_RendererID);
 	}
 
 	void OpenGLIndexBuffer::Bind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 	
 	void OpenGLIndexBuffer::Unbind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}

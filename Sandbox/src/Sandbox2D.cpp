@@ -69,7 +69,7 @@ void Sandbox2D::OnDetach()
 
 void Sandbox2D::OnUpdate(Rogue::Timestep ts)
 {
-	MC_PROFILE_FUNCTION();
+	RE_PROFILE_FUNCTION();
 
 	// Update
 	m_CameraController.OnUpdate(ts);
@@ -77,7 +77,7 @@ void Sandbox2D::OnUpdate(Rogue::Timestep ts)
 	// Render
 	Rogue::Renderer2D::ResetStats();
 	{
-		MC_PROFILE_SCOPE("Renderer Prep");
+		RE_PROFILE_SCOPE("Renderer Prep");
 		m_Framebuffer->Bind();
 		Rogue::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Rogue::RenderCommand::Clear();
@@ -85,7 +85,7 @@ void Sandbox2D::OnUpdate(Rogue::Timestep ts)
 
 #if 0
 	{
-		MC_PROFILE_SCOPE("Renderer Draw");
+		RE_PROFILE_SCOPE("Renderer Draw");
 
 		static float rotation = 0.0f;
 		rotation += ts * 50.0f;
@@ -154,7 +154,7 @@ void Sandbox2D::OnUpdate(Rogue::Timestep ts)
 
 void Sandbox2D::OnImGuiRender()
 {
-	MC_PROFILE_FUNCTION();
+	RE_PROFILE_FUNCTION();
 
 	// Note: switch this to true to enable dockspace
 	static bool dockingEnabled{ true };

@@ -108,7 +108,7 @@ public:
 	{
 		// Update
 		m_CameraController.OnUpdate(ts);
-		// MC_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
+		// RE_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 
 		Rogue::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Rogue::RenderCommand::Clear();

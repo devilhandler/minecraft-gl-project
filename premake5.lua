@@ -85,25 +85,25 @@ project "RogueEngine"
 
 		defines
 		{
-			"MC_PLATFORM_WINDOWS",
-			"MC_BUILD_DLL",
+			"RE_PLATFORM_WINDOWS",
+			"RE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"
-		defines "MC_DEBUG"
+		defines "RE_DEBUG"
 		runtime "Debug"
 		-- buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "MC_RELEASE"
+		defines "RE_RELEASE"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
-		defines "MC_DIST"
+		defines "RE_DIST"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "on"
@@ -146,23 +146,23 @@ project "Sandbox"
 
 		defines
 		{
-			"MC_PLATFORM_WINDOWS"
+			"RE_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
-		defines "MC_DEBUG"
+		defines "RE_DEBUG"
 		runtime "Debug"
 		-- buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "MC_RELEASE"
+		defines "RE_RELEASE"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
-		defines "MC_DIST"
+		defines "RE_DIST"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "on"
@@ -205,23 +205,23 @@ project "RogueCanvas"
 
 		defines
 		{
-			"MC_PLATFORM_WINDOWS"
+			"RE_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
-		defines "MC_DEBUG"
+		defines "RE_DEBUG"
 		runtime "Debug"
 		-- buildoptions "/MDd"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "MC_RELEASE"
+		defines "RE_RELEASE"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "on"
 
 	filter "configurations:Dist"
-		defines "MC_DIST"
+		defines "RE_DIST"
 		runtime "Release"
 		-- buildoptions "/MD"
 		optimize "on"

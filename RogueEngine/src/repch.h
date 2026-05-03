@@ -17,6 +17,6 @@
 #include "Rogue/Core/Log.h"
 #include "Rogue/Debug/Instrumetor.h"
 
-#ifdef MC_PLATFORM_WINDOWS
+#ifdef RE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

@@ -2,35 +2,35 @@
 
 #include <memory>
 
-#ifdef MC_PLATFORM_WINDOWS
-	#if MC_DYNAMIC_LINK
-		#ifdef MC_BUILD_DLL
-			#define MC_API __declspec(dllexport)
+#ifdef RE_PLATFORM_WINDOWS
+	#if RE_DYNAMIC_LINK
+		#ifdef RE_BUILD_DLL
+			#define RE_API __declspec(dllexport)
 		#else
-			#define MC_API __declspec(dllimport)
+			#define RE_API __declspec(dllimport)
 		#endif
 	#else
-		#define MC_API
+		#define RE_API
 	#endif
 #else
-	#error This minecraft clone project only support Windows!
+	#error Rogue Engine currently only support Windows!
 #endif
 
-#ifdef MC_DEBUG
-	#define MC_ENABLE_ASSERTS
+#ifdef RE_DEBUG
+	#define RE_ENABLE_ASSERTS
 #endif
 
-#ifdef MC_ENABLE_ASSERTS
-	#define MC_ASSERT(x, ...) { if (!(x)) { MC_ERROR("Assertion Failed: {0}", __VA_ARGS__); } }
-	#define MC_CORE_ASSERT(x, ...) { if (!(x)) { MC_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); } }
+#ifdef RE_ENABLE_ASSERTS
+	#define RE_ASSERT(x, ...) { if (!(x)) { RE_ERROR("Assertion Failed: {0}", __VA_ARGS__); } }
+	#define RE_CORE_ASSERT(x, ...) { if (!(x)) { RE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); } }
 #else
-	#define MC_ASSERT(x, ...)
-	#define MC_CORE_ASSERT(x, ...)
+	#define RE_ASSERT(x, ...)
+	#define RE_CORE_ASSERT(x, ...)
 #endif
 
 #define BIT(x) (1 << x)
 
-#define MC_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+#define RE_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
 namespace Rogue
 {

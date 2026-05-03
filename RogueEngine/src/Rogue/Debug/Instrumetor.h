@@ -136,15 +136,15 @@ namespace Rogue {
 	};
 }
 
-#define MC_PROFILE 1
-#ifdef MC_PROFILE
-#define MC_PROFILE_BEGIN_SESSION(name, filepath) ::Rogue::Instrumentor::Get().BeginSession(name, filepath)
-#define MC_PROFILE_END_SESSION() ::Rogue::Instrumentor::Get().EndSession()
-#define MC_PROFILE_SCOPE(name) ::Rogue::InstrumentationTimer timer##__LINE__(name);
-#define MC_PROFILE_FUNCTION() MC_PROFILE_SCOPE(__FUNCSIG__)
+#define RE_PROFILE 1
+#ifdef RE_PROFILE
+#define RE_PROFILE_BEGIN_SESSION(name, filepath) ::Rogue::Instrumentor::Get().BeginSession(name, filepath)
+#define RE_PROFILE_END_SESSION() ::Rogue::Instrumentor::Get().EndSession()
+#define RE_PROFILE_SCOPE(name) ::Rogue::InstrumentationTimer timer##__LINE__(name);
+#define RE_PROFILE_FUNCTION() RE_PROFILE_SCOPE(__FUNCSIG__)
 #else
-#define MC_PROFILE_BEGIN_SESSION(name, filepath)
-#define MC_PROFILE_END_SESSION()
-#define MC_PROFILE_SCOPE(name)
-#define MC_PROFILE_FUNCTION()
+#define RE_PROFILE_BEGIN_SESSION(name, filepath)
+#define RE_PROFILE_END_SESSION()
+#define RE_PROFILE_SCOPE(name)
+#define RE_PROFILE_FUNCTION()
 #endif

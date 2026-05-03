@@ -11,7 +11,7 @@ namespace Rogue
 
 	static void GLFWErrorCallback(int error_code, const char* description)
 	{
-		MC_CORE_ERROR("GLFW Error ({0}): {1}", error_code, description);
+		RE_CORE_ERROR("GLFW Error ({0}): {1}", error_code, description);
 	}
 	
 	Scope<Window> Window::Create(const WindowProps& props)
@@ -21,35 +21,35 @@ namespace Rogue
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow() 
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		MC_CORE_INFO("Create window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		RE_CORE_INFO("Create window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 		if (s_GLFWWindowCount == 0)
 		{
-			MC_PROFILE_SCOPE("glfwInit");
+			RE_PROFILE_SCOPE("glfwInit");
 			int success = glfwInit();
-			MC_CORE_ASSERT(success, "Could not initialize GLFW!");
+			RE_CORE_ASSERT(success, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
 		
 		{
-			MC_PROFILE_SCOPE("glfwCreateWindow");
+			RE_PROFILE_SCOPE("glfwCreateWindow");
 			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 			++s_GLFWWindowCount;
 		}
@@ -147,20 +147,20 @@ namespace Rogue
 
 	void WindowsWindow::Shutdown()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glfwDestroyWindow(m_Window);
 		--s_GLFWWindowCount;
 		if (s_GLFWWindowCount == 0)
 		{
-			MC_CORE_INFO("Terminating GLFW");
+			RE_CORE_INFO("Terminating GLFW");
 			glfwTerminate();
 		}
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glfwPollEvents();
 		m_Context->SwapBuffers();
@@ -168,7 +168,7 @@ namespace Rogue
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		if (enabled)
 			glfwSwapInterval(1);

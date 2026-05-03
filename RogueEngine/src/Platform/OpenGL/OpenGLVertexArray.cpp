@@ -23,43 +23,43 @@ namespace Rogue
 			case ShaderDataType::Bool:			return GL_BOOL;
 		}
 
-		MC_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		RE_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glCreateVertexArrays(1, &m_RendererID);
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
 
 	void OpenGLVertexArray::Bind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glBindVertexArray(m_RendererID);
 	}
 
 	void OpenGLVertexArray::Unbind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glBindVertexArray(0);
 	}
 
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
-		MC_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex buffer has no layout!");
+		RE_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex buffer has no layout!");
 		
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();
@@ -85,7 +85,7 @@ namespace Rogue
 
 	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();

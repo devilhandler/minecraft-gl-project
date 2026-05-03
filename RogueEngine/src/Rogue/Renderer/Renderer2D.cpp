@@ -47,7 +47,7 @@ namespace Rogue
 
 	void Renderer2D::Init()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		// Square test
 		s_Data.QuadVertexArray = VertexArray::Create();
@@ -115,12 +115,12 @@ namespace Rogue
 
 	void Renderer2D::Shutdown()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		s_Data.TextureShader->Bind();
 		s_Data.TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
@@ -133,7 +133,7 @@ namespace Rogue
 
 	void Renderer2D::EndScene()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		uint32_t dataSize{ static_cast<uint32_t>((uint8_t*)s_Data.QuadVertexBufferPtr - (uint8_t*)s_Data.QuadVertexBufferBase) };
 		s_Data.QuadVertexBuffer->SetData(s_Data.QuadVertexBufferBase, dataSize);
@@ -169,7 +169,7 @@ namespace Rogue
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		constexpr size_t quadVertexCount{ 4 };
 		constexpr float tilingFactor{ 1.0f };
@@ -206,7 +206,7 @@ namespace Rogue
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, float tilingFactor, const glm::vec4& tintColor)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		constexpr size_t quadVertexCount{ 4 };
 		constexpr glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
@@ -262,7 +262,7 @@ namespace Rogue
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<SubTexture2D>& subtexture, float tilingFactor, const glm::vec4& tintColor)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		constexpr size_t quadVertexCount{ 4 };
 		constexpr glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
@@ -321,7 +321,7 @@ namespace Rogue
 
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
 			FlushAndReset();
@@ -360,7 +360,7 @@ namespace Rogue
 
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, float tilingFactor, const glm::vec4& tintColor)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		constexpr size_t quadVertexCount{ 4 };
 		constexpr glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };
@@ -418,7 +418,7 @@ namespace Rogue
 
 	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<SubTexture2D>& subtexture, float tilingFactor, const glm::vec4& tintColor)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		constexpr size_t quadVertexCount{ 4 };
 		constexpr glm::vec4 color{ 1.0f, 1.0f, 1.0f, 1.0f };

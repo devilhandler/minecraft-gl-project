@@ -13,13 +13,13 @@ namespace Rogue
 
 	Application::Application()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
-		MC_CORE_ASSERT(!s_Instance, "Application already exists!");
+		RE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = Window::Create();
-		m_Window->SetEventCallback(MC_BIND_EVENT_FN(Application::OnEvent));
+		m_Window->SetEventCallback(RE_BIND_EVENT_FN(Application::OnEvent));
 		m_Window->SetVSync(true);
 
 		Renderer::Init();
@@ -30,14 +30,14 @@ namespace Rogue
 
 	Application::~Application()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
@@ -45,7 +45,7 @@ namespace Rogue
 
 	void Application::PushOverlay(Layer* overlay)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		m_LayerStack.PushOverlay(overlay);
 		overlay->OnAttach();
@@ -58,11 +58,11 @@ namespace Rogue
 
 	void Application::OnEvent(Event& e)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(MC_BIND_EVENT_FN(Application::OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(MC_BIND_EVENT_FN(Application::OnWindowResize));
+		dispatcher.Dispatch<WindowCloseEvent>(RE_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(RE_BIND_EVENT_FN(Application::OnWindowResize));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
@@ -74,11 +74,11 @@ namespace Rogue
 
 	void Application::Run()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		while (m_Running)
 		{
-			MC_PROFILE_SCOPE("RunLoop");
+			RE_PROFILE_SCOPE("RunLoop");
 
 			float time{ (float) glfwGetTime() }; // Platform::GetTime()
 			Timestep timestep{ time - m_LastFrameTime };
@@ -87,7 +87,7 @@ namespace Rogue
 			if (!m_Minimized)
 			{
 				{
-					MC_PROFILE_SCOPE("LayerStack OnUpdate");
+					RE_PROFILE_SCOPE("LayerStack OnUpdate");
 
 					for (Layer* layer : m_LayerStack)
 						layer->OnUpdate(timestep);
@@ -96,7 +96,7 @@ namespace Rogue
 				// ImGui Render
 				m_ImGuiLayer->Begin();
 				{
-					MC_PROFILE_SCOPE("LayerStack OnImGuiRender");
+					RE_PROFILE_SCOPE("LayerStack OnImGuiRender");
 
 					for (Layer* layer : m_LayerStack)
 						layer->OnImGuiRender();
@@ -116,7 +116,7 @@ namespace Rogue
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{

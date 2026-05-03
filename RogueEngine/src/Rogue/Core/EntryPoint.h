@@ -1,7 +1,7 @@
 #pragma once
 #include "Rogue/Core/Core.h"
 
-#ifdef MC_PLATFORM_WINDOWS
+#ifdef RE_PLATFORM_WINDOWS
 
 extern Rogue::Application* Rogue::CreateApplication();
 
@@ -9,18 +9,18 @@ int main(int argc, char** argv)
 {
 	Rogue::Log::Init();
 	
-	MC_PROFILE_BEGIN_SESSION("Startup", "MinecraftProfile.Startup.json");
+	RE_PROFILE_BEGIN_SESSION("Startup", "RogueEngineProfile.Startup.json");
 	auto app{ Rogue::CreateApplication() };
-	MC_PROFILE_END_SESSION();
+	RE_PROFILE_END_SESSION();
 
 	// TODO: Fix memory leak, literally prints so much string to the json file.
-	// MC_PROFILE_BEGIN_SESSION("Runtime", "MinecraftProfile.Runtime.json");
+	// RE_PROFILE_BEGIN_SESSION("Runtime", "RogueEngineProfile.Runtime.json");
 	app->Run();
-	// MC_PROFILE_END_SESSION();
+	// RE_PROFILE_END_SESSION();
 
-	MC_PROFILE_BEGIN_SESSION("Shutdown", "MinecraftProfile.Shutdown.json");
+	RE_PROFILE_BEGIN_SESSION("Shutdown", "RogueEngineProfile.Shutdown.json");
 	delete app;
-	MC_PROFILE_END_SESSION();
+	RE_PROFILE_END_SESSION();
 }
 
 #endif

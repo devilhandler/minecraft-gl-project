@@ -12,13 +12,13 @@ namespace Rogue
 	{
 		if (type == "vertex")								return GL_VERTEX_SHADER;
 		if (type == "fragment" || type == "pixel")			return GL_FRAGMENT_SHADER;
-		MC_CORE_ASSERT(false, "Unknown shader type!");
+		RE_CORE_ASSERT(false, "Unknown shader type!");
 		return 0;
 	}
 
 	OpenGLShader::OpenGLShader(const std::string& filepath)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		std::string source{ ReadFile(filepath) };
 		auto shaderSources{ PreProcess(source) };
@@ -34,7 +34,7 @@ namespace Rogue
 
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSource;
@@ -44,14 +44,14 @@ namespace Rogue
 
 	OpenGLShader::~OpenGLShader()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glDeleteProgram(m_RendererID);
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		std::string result;
 		std::ifstream in(filepath, std::ios::in | std::ios::binary);
@@ -65,7 +65,7 @@ namespace Rogue
 		}
 		else
 		{
-			MC_CORE_ERROR("Could not open file '{0}'", filepath);
+			RE_CORE_ERROR("Could not open file '{0}'", filepath);
 		}
 
 		return result;
@@ -73,7 +73,7 @@ namespace Rogue
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		std::unordered_map<GLenum, std::string> shaderSources;
 
@@ -83,10 +83,10 @@ namespace Rogue
 		while (pos != std::string::npos)
 		{
 			size_t eol{ source.find_first_of("\r\n", pos) };
-			MC_CORE_ASSERT(eol != std::string::npos, "Syntax error");
+			RE_CORE_ASSERT(eol != std::string::npos, "Syntax error");
 			size_t begin{ pos + typeTokenLength + 1 };
 			std::string type{ source.substr(begin, eol - begin) };
-			MC_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified!");
+			RE_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified!");
 
 			size_t nextLinePos{ source.find_first_not_of("\r\n", eol) };
 			pos = source.find(typeToken, nextLinePos);
@@ -100,7 +100,7 @@ namespace Rogue
 
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string> shaderSources)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		// Get a program object.
 		// Vertex and fragment shaders will be linked to this program.
@@ -111,7 +111,7 @@ namespace Rogue
 		// Since I mean it's still in-dev, we only use fragment and vertex shaders.
 		// We will have "n" as 2 for now.
 		const int n_shaders{ 2 };
-		MC_CORE_ASSERT(shaderSources.size() <= n_shaders, "We only support 2 shaders for now.");
+		RE_CORE_ASSERT(shaderSources.size() <= n_shaders, "We only support 2 shaders for now.");
 		std::array<GLenum, n_shaders> glShaderIDs;
 
 		int glShaderIDIndex{ 0 };
@@ -143,8 +143,8 @@ namespace Rogue
 				// We don't need the shader anymore.
 				glDeleteShader(shader);
 
-				MC_CORE_ERROR("{0}", infoLog.data());
-				MC_CORE_ASSERT(false, "Shader compilation failure!");
+				RE_CORE_ERROR("{0}", infoLog.data());
+				RE_CORE_ASSERT(false, "Shader compilation failure!");
 				break;
 			}
 
@@ -174,8 +174,8 @@ namespace Rogue
 			for (auto id : glShaderIDs)
 				glDeleteShader(id);
 
-			MC_CORE_ERROR("{0}", infoLog.data());
-			MC_CORE_ASSERT(false, "Shader link failure!");
+			RE_CORE_ERROR("{0}", infoLog.data());
+			RE_CORE_ASSERT(false, "Shader link failure!");
 			return;
 		}
 
@@ -191,14 +191,14 @@ namespace Rogue
 
 	void OpenGLShader::Bind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Unbind() const
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		glUseProgram(0);
 	}
@@ -209,42 +209,42 @@ namespace Rogue
 
 	void OpenGLShader::SetInt(const std::string& name, const int& value)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		UploadUniformInt(name, value);
 	}
 
 	void OpenGLShader::SetIntArray(const std::string& name, int* values, uint32_t count)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		UploadUniformIntArray(name, values, count);
 	}
 
 	void OpenGLShader::SetFloat(const std::string& name, float value)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		UploadUniformFloat(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		UploadUniformFloat3(name, value);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		UploadUniformFloat4(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		UploadUniformMat4(name, value);
 	}

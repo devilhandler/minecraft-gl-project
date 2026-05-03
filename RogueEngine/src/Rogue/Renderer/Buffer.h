@@ -31,7 +31,7 @@ namespace Rogue
 			case ShaderDataType::Bool:		return 1;
 		}
 
-		MC_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		RE_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
@@ -67,7 +67,7 @@ namespace Rogue
 				case ShaderDataType::Bool:		return 1;
 			}
 
-			MC_CORE_ASSERT(false, "Unknown ShaderDataType!");
+			RE_CORE_ASSERT(false, "Unknown ShaderDataType!");
 			return 0;
 		}
 	};

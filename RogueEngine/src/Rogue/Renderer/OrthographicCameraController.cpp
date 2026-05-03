@@ -16,22 +16,22 @@ namespace Rogue
 
 	void OrthographicCameraController::OnUpdate(Timestep ts)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
-		if (Input::IsKeyPressed(MC_KEY_A))
+		if (Input::IsKeyPressed(RE_KEY_A))
 			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
-		if (Input::IsKeyPressed(MC_KEY_D))
+		if (Input::IsKeyPressed(RE_KEY_D))
 			m_CameraPosition.x += m_CameraTranslationSpeed * ts;
-		if (Input::IsKeyPressed(MC_KEY_S))
+		if (Input::IsKeyPressed(RE_KEY_S))
 			m_CameraPosition.y -= m_CameraTranslationSpeed * ts;
-		if (Input::IsKeyPressed(MC_KEY_W))
+		if (Input::IsKeyPressed(RE_KEY_W))
 			m_CameraPosition.y += m_CameraTranslationSpeed * ts;
 
 		if (m_Rotation)
 		{
-			if (Input::IsKeyPressed(MC_KEY_Q))
+			if (Input::IsKeyPressed(RE_KEY_Q))
 				m_CameraRotation += m_CameraRotationSpeed * ts;
-			if (Input::IsKeyPressed(MC_KEY_R))
+			if (Input::IsKeyPressed(RE_KEY_R))
 				m_CameraRotation -= m_CameraRotationSpeed * ts;
 			m_Camera.SetRotation(m_CameraRotation);
 		}
@@ -42,11 +42,11 @@ namespace Rogue
 
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<MouseScrolledEvent>(MC_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
-		dispatcher.Dispatch<WindowResizeEvent>(MC_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
+		dispatcher.Dispatch<MouseScrolledEvent>(RE_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
+		dispatcher.Dispatch<WindowResizeEvent>(RE_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
 	}
 
 	void OrthographicCameraController::CalculateView()
@@ -56,7 +56,7 @@ namespace Rogue
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
@@ -66,7 +66,7 @@ namespace Rogue
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		CalculateView();

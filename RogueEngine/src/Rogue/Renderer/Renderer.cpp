@@ -9,7 +9,7 @@ namespace Rogue
 
 	void Renderer::Init()
 	{
-		MC_PROFILE_FUNCTION();
+		RE_PROFILE_FUNCTION();
 
 		RenderCommand::Init();
 		Renderer2D::Init();
