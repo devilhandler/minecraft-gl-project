@@ -147,6 +147,13 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\EditorLayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\EditorLayer.cpp" />
+    <ClCompile Include="src\RogueCanvasApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\RogueEngine\RogueEngine.vcxproj">
       <Project>{7D418743-E9F6-FF38-72EB-F90FDE9FF63C}</Project>
     </ProjectReference>

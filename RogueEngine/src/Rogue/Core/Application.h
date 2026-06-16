@@ -16,7 +16,7 @@ namespace Rogue
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Rogue App");
 		virtual ~Application();
 
 		void Run();

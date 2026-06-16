@@ -6,7 +6,7 @@
 namespace Rogue
 {
 
-	// Events in this Minecraft project are currently blocking, meaning an event occurs it
+	// Events in Rogue Engine are currently blocking, meaning an event occurs it
 	// immediately gets dispatched and must be dealt right and there.
 	// For the future, a better strategy might be to buffer events in an event
 	// bus and process them during the "event" part of the update stage.

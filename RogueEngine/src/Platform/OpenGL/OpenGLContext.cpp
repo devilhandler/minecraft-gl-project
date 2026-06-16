@@ -40,7 +40,7 @@ namespace Rogue
 		RE_CORE_ASSERT
 		(
 			versionMajor > 4 || (versionMajor == 4 && versionMinor >= 6), 
-			"Minecraft requires OpenGL 4.6!"
+			"Rogue Engine requires OpenGL 4.6!"
 		);
 		#endif
 	}
