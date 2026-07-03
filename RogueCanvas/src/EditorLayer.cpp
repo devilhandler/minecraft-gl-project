@@ -159,67 +159,64 @@ namespace Rogue
 	{
 		RE_PROFILE_FUNCTION();
 
-		// Note: switch this to true to enable dockspace
-		static bool dockingEnabled{ true };
-		if (dockingEnabled)
+		static bool dockspaceOpen{ true };
+		ImGui::DockSpaceOverViewport(0, nullptr);
+		ImGui::Begin("Dockspace", &dockspaceOpen, ImGuiWindowFlags_MenuBar);
+
+		ImGui::SeparatorText("Options");
+		s_DockspaceArgs.DockSpaceFlags &= ImGuiDockNodeFlags_PassthruCentralNode; // Allowed flags
+		ImGui::CheckboxFlags("Flag: PassthruCentralNode", &s_DockspaceArgs.DockSpaceFlags, ImGuiDockNodeFlags_PassthruCentralNode);
+
+		// Show demo options and help
+		if (ImGui::BeginMenuBar())
 		{
-			static bool dockspaceOpen{ true };
-
-			ImGui::DockSpaceOverViewport(0, nullptr);
-			ImGui::Begin("Dockspace", &dockspaceOpen, ImGuiWindowFlags_MenuBar);
-
-			ImGui::SeparatorText("Options");
-			s_DockspaceArgs.DockSpaceFlags &= ImGuiDockNodeFlags_PassthruCentralNode; // Allowed flags
-			ImGui::CheckboxFlags("Flag: PassthruCentralNode", &s_DockspaceArgs.DockSpaceFlags, ImGuiDockNodeFlags_PassthruCentralNode);
-
-			// Show demo options and help
-			if (ImGui::BeginMenuBar())
+			if (ImGui::BeginMenu("File"))
 			{
-				if (ImGui::BeginMenu("File"))
-				{
-					if (ImGui::MenuItem("Exit")) Rogue::Application::Get().Close();
-					ImGui::EndMenu();
-				}
-				ImGui::EndMenuBar();
+				if (ImGui::MenuItem("Exit")) Rogue::Application::Get().Close();
+				ImGui::EndMenu();
 			}
-
-			// Begin: ImGui Renderer2D Stats
-			ImGui::Begin("Settings");
-
-			auto stats = Rogue::Renderer2D::GetStats();
-			ImGui::Text("Renderer2D Stats:");
-			ImGui::Text("Draw Calls: %d", stats.DrawCalls);
-			ImGui::Text("Quads: %d", stats.QuadCount);
-			ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-			ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-
-			ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
-
-			uint32_t textureID{ m_Framebuffer->GetColorAttachmentRendererID() };
-			ImGui::Image(textureID, ImVec2{ 1280.0f, 720.0f }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
-			ImGui::End();
-			// End: ImGui Renderer2D Stats
-
-			ImGui::End();
+			ImGui::EndMenuBar();
 		}
-		else
+
+		// Begin: ImGui Renderer2D Stats
+		ImGui::Begin("Settings");
+
+		auto stats = Rogue::Renderer2D::GetStats();
+		ImGui::Text("Renderer2D Stats:");
+		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+		ImGui::Text("Quads: %d", stats.QuadCount);
+		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+
+		ImGui::End();
+		// End: ImGui Renderer2D Stats
+
+			
+		// Begin: ImGui Viewport
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+		ImGui::Begin("Viewport");
+
+		ImVec2 viewportPanelSize{ ImGui::GetContentRegionAvail() };
+		uint32_t textureID{ m_Framebuffer->GetColorAttachmentRendererID() };
+
+		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize))
 		{
-			// Begin: ImGui Renderer2D Stats
-			ImGui::Begin("Settings");
+			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
+			m_Framebuffer->Resize((uint32_t)viewportPanelSize.x, (uint32_t)viewportPanelSize.y);
 
-			auto stats = Rogue::Renderer2D::GetStats();
-			ImGui::Text("Renderer2D Stats:");
-			ImGui::Text("Draw Calls: %d", stats.DrawCalls);
-			ImGui::Text("Quads: %d", stats.QuadCount);
-			ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
-			ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-
-			ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
-
-			ImGui::Image(m_Texture->GetRendererID(), ImVec2{ 256.0f, 256.0f });
-			ImGui::End();
-			// End: ImGui Renderer2D Stats
+			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
 		}
+
+		// RE_CORE_WARN("Viewport Size: {0}, {1}", viewportPanelSize.x, viewportPanelSize.y);
+		ImGui::Image(textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+
+		ImGui::End();
+		ImGui::PopStyleVar();
+		// End: ImGui Viewport
+
+		ImGui::End();
 	}
 
 	void EditorLayer::OnEvent(Rogue::Event& e)
