@@ -75,7 +75,8 @@ namespace Rogue
 		RE_PROFILE_FUNCTION();
 
 		// Update
-		m_CameraController.OnUpdate(ts);
+		if (m_ViewportFocused)
+			m_CameraController.OnUpdate(ts);
 
 		// Render
 		Rogue::Renderer2D::ResetStats();
@@ -198,6 +199,13 @@ namespace Rogue
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		ImGui::Begin("Viewport");
 
+		m_ViewportFocused = ImGui::IsWindowFocused();
+		m_ViewportHovered = ImGui::IsWindowHovered();
+		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
+
+		RE_CORE_WARN("Focused: {0}", ImGui::IsWindowFocused());
+		RE_CORE_WARN("Hovered: {0}", ImGui::IsWindowHovered());
+
 		ImVec2 viewportPanelSize{ ImGui::GetContentRegionAvail() };
 		uint32_t textureID{ m_Framebuffer->GetColorAttachmentRendererID() };
 
@@ -209,7 +217,6 @@ namespace Rogue
 			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
 		}
 
-		// RE_CORE_WARN("Viewport Size: {0}, {1}", viewportPanelSize.x, viewportPanelSize.y);
 		ImGui::Image(textureID, ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
 
 		ImGui::End();

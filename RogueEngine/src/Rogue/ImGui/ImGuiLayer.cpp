@@ -105,9 +105,13 @@ namespace Rogue
 		}
 	}
 
-	void ImGuiLayer::OnImGuiRender()
+	void ImGuiLayer::OnEvent(Event& event)
 	{
-		//static bool show = false;
-		//ImGui::ShowDemoWindow(&show);
+		if (m_BlockEvents)
+		{
+			ImGuiIO& io = ImGui::GetIO();
+			event.Handled |= event.IsInCategory(EventCategoryMouse) & io.WantCaptureMouse;
+			event.Handled |= event.IsInCategory(EventCategoryKeyboard) & io.WantCaptureKeyboard;
+		}
 	}
 }
