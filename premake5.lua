@@ -21,6 +21,7 @@ IncludeDir["Glad"] = EngineDir .. "/vendor/Glad/include"
 IncludeDir["imguidock"] = EngineDir .. "/vendor/imguidock"
 IncludeDir["glm"] = EngineDir .. "/vendor/glm"
 IncludeDir["stb_image"] = EngineDir .. "/vendor/stb_image"
+IncludeDir["entt"] = EngineDir .. "/vendor/entt/include"
 
 group "Dependencies"
 	include (EngineDir .. "/vendor/GLFW")
@@ -60,7 +61,8 @@ project "RogueEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.imguidock}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -130,7 +132,8 @@ project "Sandbox"
 		EngineDir .. "/vendor/spdlog/include",
 		EngineDir .. "/src",
 		EngineDir .. "/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -189,7 +192,8 @@ project "RogueCanvas"
 		EngineDir .. "/vendor/spdlog/include",
 		EngineDir .. "/src",
 		EngineDir .. "/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

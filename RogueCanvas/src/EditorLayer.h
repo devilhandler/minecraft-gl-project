@@ -17,24 +17,23 @@ namespace Rogue
 		virtual void OnImGuiRender() override;
 		void OnEvent(Event& e) override;
 	private:
-		Ref<VertexArray> m_VertexArray;
-		Ref<Shader> m_Shader;
-
 		OrthographicCameraController m_CameraController;
 
+
 		// Temp
-		Ref<Texture2D> m_Texture;
-		Ref<Texture2D> m_SpriteSheet;
-		Ref<SubTexture2D> m_Stairs, m_Barrel, m_Tree;
+		Ref<VertexArray> m_SquareVA;
+		Ref<Shader> m_FlatColorShader;
 		Ref<Framebuffer> m_Framebuffer;
+
+		Ref<Texture2D> m_CheckerboardTexture;
+
+		Ref<Scene> m_ActiveScene;
+		entt::entity m_SquareEntity;
 
 		glm::vec4 m_SquareColor{ 0.8f, 0.2f, 0.3f, 1.0f };
 		glm::vec2 m_ViewportSize{ 0.0f, 0.0f };
 
 		bool m_ViewportFocused{ false };
 		bool m_ViewportHovered{ false };
-
-		uint32_t m_MapWidth, m_MapHeight;
-		std::unordered_map<char, Ref<SubTexture2D>> s_TextureMap;
 	};
 }

@@ -34,6 +34,9 @@
     <Filter Include="src\Rogue\Renderer\3D">
       <UniqueIdentifier>{2AF1794B-965D-3546-5F51-CDA3CB7C57AE}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Rogue\Scene">
+      <UniqueIdentifier>{1B1F2526-87AA-92EA-90BB-15DFFCC5EEEA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -179,6 +182,9 @@
     </ClInclude>
     <ClInclude Include="src\Rogue\Renderer\VertexArray.h">
       <Filter>src\Rogue\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rogue\Scene\Scene.h">
+      <Filter>src\Rogue\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\RogueEngine.h">
       <Filter>src</Filter>
@@ -1446,6 +1452,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rogue\Scene\Components.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1543,6 +1550,9 @@
     </ClCompile>
     <ClCompile Include="src\Rogue\Renderer\VertexArray.cpp">
       <Filter>src\Rogue\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rogue\Scene\Scene.cpp">
+      <Filter>src\Rogue\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp">
       <Filter>src</Filter>
