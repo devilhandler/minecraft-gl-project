@@ -18,6 +18,7 @@
 #include "Rogue/ImGui/ImGuiLayer.h"
 
 #include "Rogue/Scene/Scene.h"
+#include "Rogue/Scene/Entity.h"
 #include "Rogue/Scene/Components.h"
 
 // --- Renderer ----------------------

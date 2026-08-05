@@ -28,7 +28,7 @@ namespace Rogue
 		Ref<Texture2D> m_CheckerboardTexture;
 
 		Ref<Scene> m_ActiveScene;
-		entt::entity m_SquareEntity;
+		Entity m_SquareEntity;
 
 		glm::vec4 m_SquareColor{ 0.8f, 0.2f, 0.3f, 1.0f };
 		glm::vec2 m_ViewportSize{ 0.0f, 0.0f };

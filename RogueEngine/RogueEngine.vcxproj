@@ -197,6 +197,7 @@
     <ClInclude Include="src\Rogue\Renderer\Texture.h" />
     <ClInclude Include="src\Rogue\Renderer\VertexArray.h" />
     <ClInclude Include="src\Rogue\Scene\Components.h" />
+    <ClInclude Include="src\Rogue\Scene\Entity.h" />
     <ClInclude Include="src\Rogue\Scene\Scene.h" />
     <ClInclude Include="src\RogueEngine.h" />
     <ClInclude Include="src\repch.h" />
@@ -654,6 +655,7 @@
     <ClCompile Include="src\Rogue\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Rogue\Renderer\Texture.cpp" />
     <ClCompile Include="src\Rogue\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Rogue\Scene\Entity.cpp" />
     <ClCompile Include="src\Rogue\Scene\Scene.cpp" />
     <ClCompile Include="src\repch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
