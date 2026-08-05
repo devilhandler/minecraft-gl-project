@@ -1454,6 +1454,7 @@
     </ClInclude>
     <ClInclude Include="src\Rogue\Scene\Components.h" />
     <ClInclude Include="src\Rogue\Scene\Entity.h" />
+    <ClInclude Include="src\Rogue\Renderer\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">

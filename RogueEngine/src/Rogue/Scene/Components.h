@@ -2,6 +2,8 @@
 
 #include <glm/glm.hpp>
 
+#include "Rogue/Renderer/Camera.h"
+
 namespace Rogue
 {
 	struct TagComponent
@@ -32,5 +34,15 @@ namespace Rogue
 		SpriteRendererComponent() = default;
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4& color) : Color(color) {}
+	};
+
+	struct CameraComponent
+	{
+		Rogue::Camera Camera;
+		bool Primary{ true };
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4& projection) : Camera(projection) {}
 	};
 }

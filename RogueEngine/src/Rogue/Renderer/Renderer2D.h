@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Rogue/Renderer/Camera.h"
 #include "Rogue/Renderer/OrthographicCamera.h"
 
 #include "Rogue/Renderer/Texture.h"
@@ -12,7 +13,8 @@ namespace Rogue {
 		static void Init();
 		static void Shutdown();
 
-		static void BeginScene(const OrthographicCamera& camera);
+		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const OrthographicCamera& camera); // TODO: Remove
 		static void EndScene();
 		static void Flush();
 
