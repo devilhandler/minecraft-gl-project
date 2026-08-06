@@ -202,6 +202,7 @@
     <ClInclude Include="src\Rogue\Scene\Scene.h" />
     <ClInclude Include="src\RogueEngine.h" />
     <ClInclude Include="src\repch.h" />
+    <ClInclude Include="src\Rogue\Scene\SceneCamera.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_noise.hpp" />
@@ -661,6 +662,7 @@
     <ClCompile Include="src\repch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Rogue\Scene\SceneCamera.cpp" />
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>

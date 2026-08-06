@@ -1455,6 +1455,7 @@
     <ClInclude Include="src\Rogue\Scene\Components.h" />
     <ClInclude Include="src\Rogue\Scene\Entity.h" />
     <ClInclude Include="src\Rogue\Renderer\Camera.h" />
+    <ClInclude Include="src\Rogue\Scene\SceneCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1563,5 +1564,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\Rogue\Scene\Entity.cpp" />
+    <ClCompile Include="src\Rogue\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

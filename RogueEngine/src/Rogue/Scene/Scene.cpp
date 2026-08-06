@@ -63,6 +63,7 @@ namespace Rogue
 		return entity;
 	}
 
+
 	void Scene::OnUpdate(Timestep ts)
 	{
 
@@ -70,13 +71,21 @@ namespace Rogue
 		Camera* mainCamera{ nullptr };
 		glm::mat4* cameraTransform{ nullptr };
 		{
-			auto group{ m_Registry.view<TransformComponent, CameraComponent>() };
-			for (auto entity : group)
+			auto view{ m_Registry.view<TransformComponent, CameraComponent>() };
+			for (auto entity : view)
 			{
-				auto&& [transform, camera] {group.get<TransformComponent, CameraComponent>(entity)};
+				auto&& [transform, camera] {view.get<TransformComponent, CameraComponent>(entity)};
 
 				if (camera.Primary)
 				{
+					if (m_ViewportWidth > 0 && m_ViewportHeight > 0)
+					{
+						camera.Camera.SetViewportSize(
+							m_ViewportWidth,
+							m_ViewportHeight
+						);
+					}
+
 					mainCamera = &camera.Camera;
 					cameraTransform = &transform.Transform;
 					break;
@@ -86,7 +95,7 @@ namespace Rogue
 
 		if (mainCamera)
 		{
-			Renderer2D::BeginScene(mainCamera->GetProjection(), *cameraTransform);
+			Renderer2D::BeginScene(*mainCamera, *cameraTransform);
 
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 			for (auto entity : group)
@@ -101,4 +110,27 @@ namespace Rogue
 
 
 	}
+
+	void Scene::OnViewportResize(uint32_t width, uint32_t height)
+	{
+		if (width == 0 || height == 0)
+		{
+			RE_CORE_WARN("Scene::OnViewportResize: Width or height is 0");
+			return;
+		}
+
+
+		m_ViewportWidth = width;
+		m_ViewportHeight = height;
+
+		// Resize our non-FixedAspectRatio cameras
+		auto view{ m_Registry.view<CameraComponent>() };
+		for (auto entity : view)
+		{
+			auto& camera{ view.get<CameraComponent>(entity) };
+			if (!camera.FixedAspectRatio)
+				camera.Camera.SetViewportSize(width, height);
+		}
+	}
+
 }

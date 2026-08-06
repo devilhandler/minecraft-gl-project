@@ -1,6 +1,6 @@
 #pragma once
 
-// For use by Custom Engine applications
+// For use by Custom applications
 
 #include "Rogue/Core/Core.h"
 
