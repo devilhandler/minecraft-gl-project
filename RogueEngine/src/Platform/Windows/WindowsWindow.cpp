@@ -1,9 +1,15 @@
 #include "repch.h"
 #include "Platform/Windows/WindowsWindow.h"
 
+#include "Rogue/Core/Input.h"
+
 #include "Rogue/Events/ApplicationEvent.h"
 #include "Rogue/Events/KeyEvent.h"
 #include "Rogue/Events/MouseEvent.h"
+
+#include "Rogue/Renderer/Renderer.h"
+
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Rogue
 {
@@ -84,29 +90,29 @@ namespace Rogue
 				{
 					case GLFW_PRESS:
 					{
-						KeyPressedEvent event(key, 0);
+						KeyPressedEvent event(static_cast<KeyCode>(key), 0);
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_RELEASE:
 					{
-						KeyReleasedEvent event(key);
+						KeyReleasedEvent event(static_cast<KeyCode>(key));
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_REPEAT:
 					{
-						KeyPressedEvent event(key, 1);
+						KeyPressedEvent event(static_cast<KeyCode>(key), 1);
 						data.EventCallback(event);
 						break;
 					}
 				}
 			});
 
-		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int codepoint) {
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode) {
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				KeyTypedEvent event(codepoint);
+				KeyTypedEvent event(static_cast<KeyCode>(keycode));
 				data.EventCallback(event);
 			});
 
@@ -117,13 +123,13 @@ namespace Rogue
 				{
 					case GLFW_PRESS:
 					{
-						MouseButtonPressedEvent event(button);
+						MouseButtonPressedEvent event(static_cast<MouseCode>(button));
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_RELEASE:
 					{
-						MouseButtonReleasedEvent event(button);
+						MouseButtonReleasedEvent event(static_cast<MouseCode>(button));
 						data.EventCallback(event);
 						break;
 					}
@@ -151,6 +157,7 @@ namespace Rogue
 
 		glfwDestroyWindow(m_Window);
 		--s_GLFWWindowCount;
+
 		if (s_GLFWWindowCount == 0)
 		{
 			RE_CORE_INFO("Terminating GLFW");

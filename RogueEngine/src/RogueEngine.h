@@ -12,13 +12,14 @@
 
 #include "Rogue/Core/Input.h"
 #include "Rogue/Core/KeyCodes.h"
-#include "Rogue/Core/MouseButtonCodes.h"
+#include "Rogue/Core/MouseCodes.h"
 #include "Rogue/Renderer/OrthographicCameraController.h"
 
 #include "Rogue/ImGui/ImGuiLayer.h"
 
 #include "Rogue/Scene/Scene.h"
 #include "Rogue/Scene/Entity.h"
+#include "Rogue/Scene/ScriptableEntity.h"
 #include "Rogue/Scene/Components.h"
 
 // --- Renderer ----------------------

@@ -172,7 +172,7 @@
     <ClInclude Include="src\Rogue\Core\Layer.h" />
     <ClInclude Include="src\Rogue\Core\LayerStack.h" />
     <ClInclude Include="src\Rogue\Core\Log.h" />
-    <ClInclude Include="src\Rogue\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Rogue\Core\MouseCodes.h" />
     <ClInclude Include="src\Rogue\Core\Timestep.h" />
     <ClInclude Include="src\Rogue\Core\Window.h" />
     <ClInclude Include="src\Rogue\Debug\Instrumetor.h" />
@@ -203,6 +203,7 @@
     <ClInclude Include="src\RogueEngine.h" />
     <ClInclude Include="src\repch.h" />
     <ClInclude Include="src\Rogue\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Rogue\Scene\ScriptableEntity.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_noise.hpp" />

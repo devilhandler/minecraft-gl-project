@@ -18,20 +18,20 @@ namespace Rogue
 	{
 		RE_PROFILE_FUNCTION();
 
-		if (Input::IsKeyPressed(RE_KEY_A))
+		if (Input::IsKeyPressed(KeyCode::A))
 			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
-		if (Input::IsKeyPressed(RE_KEY_D))
+		if (Input::IsKeyPressed(KeyCode::D))
 			m_CameraPosition.x += m_CameraTranslationSpeed * ts;
-		if (Input::IsKeyPressed(RE_KEY_S))
+		if (Input::IsKeyPressed(KeyCode::S))
 			m_CameraPosition.y -= m_CameraTranslationSpeed * ts;
-		if (Input::IsKeyPressed(RE_KEY_W))
+		if (Input::IsKeyPressed(KeyCode::W))
 			m_CameraPosition.y += m_CameraTranslationSpeed * ts;
 
 		if (m_Rotation)
 		{
-			if (Input::IsKeyPressed(RE_KEY_Q))
+			if (Input::IsKeyPressed(KeyCode::Q))
 				m_CameraRotation += m_CameraRotationSpeed * ts;
-			if (Input::IsKeyPressed(RE_KEY_R))
+			if (Input::IsKeyPressed(KeyCode::R))
 				m_CameraRotation -= m_CameraRotationSpeed * ts;
 			m_Camera.SetRotation(m_CameraRotation);
 		}
